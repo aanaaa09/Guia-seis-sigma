@@ -1,0 +1,58 @@
+/*
+ * responsive.css — capa responsive ADITIVA para el export eXeLearning original.
+ * Todo está dentro de @media (max-width): en pantallas grandes no se aplica nada
+ * y el sitio se ve igual que el original.
+ * No cambia colores, tipografías ni tamaños de fuente.
+ */
+
+/* ---------- Tablet y menor (<= 1024px) ---------- */
+@media (max-width: 1024px) {
+  body { min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
+  img, video, iframe, object, embed, canvas { max-width: 100%; }
+  img, video { height: auto; }
+  pre { max-width: 100%; overflow-x: auto; }
+  input, select, textarea { max-width: 100%; }
+}
+
+/* ---------- Tablet vertical y móvil (<= 768px) ---------- */
+@media (max-width: 768px) {
+  /* Contenedores de maquetación: anchos fijos -> fluidos */
+  html, body { width: auto; max-width: 100%; }
+  #outer, #wrapper, #container, #page, #main, #content, #header, #footer,
+  #nav, #navcontainer, #nodeDecoration, #topPagination, #bottomPagination,
+  .iDevice, .iDevice_inner, .iDevice_content, .block {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Columnas / menú lateral flotante -> apilado */
+  #nav, #navcontainer, #main, #content, #header, #footer {
+    float: none !important;
+    position: static !important;
+    clear: both;
+  }
+  #main, #content { margin-left: 0 !important; margin-right: 0 !important; }
+
+  /* Bloques genéricos nunca más anchos que la pantalla */
+  div, p, ul, ol, dl, blockquote, form, fieldset, pre, table {
+    max-width: 100%;
+  }
+
+  /* Tablas anchas: scroll dentro de la propia tabla, no de la página */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Imágenes flotantes -> en línea para no estrechar el texto */
+  img[align], img[style*="float"] { float: none !important; }
+}
+
+/* ---------- Móvil pequeño (<= 480px) ---------- */
+@media (max-width: 480px) {
+  /* Solo márgenes laterales del contenedor principal; no se tocan las fuentes */
+  #main, #content { padding-left: 8px !important; padding-right: 8px !important; }
+}

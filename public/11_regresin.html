@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 11. Regresión </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div><a class="withoutChild" href="5_probabilidad.html">5. Probabilidad</a></div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div><a class="withoutChild" href="7_capacidad_de_proceso.html">7. Capacidad de proceso</a></div>
+<div><a class="withoutChild" href="8_intervalos_de_confianza.html">8. Intervalos de confianza</a></div>
+<div><a class="withoutChild" href="9_contraste_de_hiptesis.html">9. Contraste de hipótesis</a></div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div class="withoutChild" id="active">11. Regresión</div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div><a class="withoutChild" href="14_doe_2_parte.html">14. DoE 2º parte</a></div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">11. Regresión</p></div>
+<div class="FreeTextIdevice" id="id91">
+<div class="iDevice emphasis0">
+<div class="block" id="ta91_1" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Cuando las variables de entrada (x's) y de salida (y) son de tipo continuo, esta herramienta bien conocida por todos nos permite tanto identificar las variables significativas como determinar la relación matemática entre entradas y salidas. ¡No podemos pedir más!</font> <br/>
+</div>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id92">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta92_29_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">El objetivo del módulo es que el alumno sea capaz de realizar análisis de regresión simples mediante Minitab.</font><br/>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id94">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta94_31_2" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Es necesario haber estudiado previamente los módulos 5, Probabilidad, 6, Estadística Básica, y 9, Contraste de Hipótesis, para poder comprender en profundidad el sentido de los análisis de regresión.  </font>
+</p>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id93">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta93_30_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material básico de lectura es el archivo "11.pdf", que se divide en los siguientes bloques:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) transparencias 1 a 8.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<font size="3"><font face="verdana,geneva">Los conceptos básicos acerca de regresión.</font></font>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) transparencias 9 a 18
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Ejemplo con una sola variable x de entrada.</font>
+</p>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 3) transparencias 19 a 30
+
+</font>
+</p>
+<div align="justify">
+</div>
+<div align="justify">
+</div>
+<blockquote>
+<font face="verdana,geneva" size="3">Ejemplo con varias variables x de entrada.</font>
+</blockquote>
+<p>
+
+ 
+
+</p>
+<div align="justify">
+<font face="verdana,geneva" size="3">Repítase el ejemplo propuesto en cada caso, con eso será suficiente. Tenga en cuenta, además, que la ecuación es lo último que hay que mirar en un análisis de este tipo, lo más importante es poder discriminar variables significativas, naturaleza de los residuales, etc. </font>
+</div>
+</div><br/>
+<div class="block" id="ta93_30_5" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id95">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta95_10" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+Partiendo de un helicóptero estándar (ver características en 1, Introducción) pero que tenga las alas de 9,5 cm. de largo; tome tres tiempos de vuelo y apunte los resultados en una hoja de Minitab como se muestra a continuación.</font>
+</p>
+<p align="center">
+<picture><source srcset="img/regresion.webp" type="image/webp"/><img alt="" decoding="async" height="686" loading="lazy" src="img/regresion.jpg" width="450"/></picture>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Ahora reduzca en 1 cm del largo de las alas (se quedarán en 8,5 cm) y repita lo anterior. Siga reduciendo las alas hasta llegar al límite inferior (6,5 cm) de especificación.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Construya la recta de regresión Tiempo=f(Alas) y responda a lo siguiente:</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">a) ¿depende el tiempo de vuelo de la longitud de las alas? </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">b) ¿es una regresión de tipo lineal?</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">c) ¿cual es la expresión matemática de esa dependencia? </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Lleve los resultados al informe del caso estudio. </font>
+</p>
+</div><div class="block" id="taquesQuestion0b95" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id96">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion96_2" style="display:block"><font face="verdana,geneva" size="3">La herramienta de regresión sirve para:</font>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint96_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint96_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint96_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Recuerde tanto lo que significa la herramienta en sí como para qué la utilizamos dentro de un proyecto Seis Sigma.</font><br/>
+</div>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i96_5" name="option96_2" onclick="getFeedback(0,3,'96_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans96_5" style="display:block"><font face="verdana,geneva" size="3">Establecer una relación funcional entre una o más variables predictoras (x's) y la variable de salida (y)</font>
+</div></td></tr>
+<tr><td><input id="i96_44" name="option96_2" onclick="getFeedback(1,3,'96_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans96_44" style="display:block"><font face="verdana,geneva" size="3">Sirve para ayudar en la tarea de descartar falsas variables predictoras en la etapa de Análisis.</font>
+</div></td></tr>
+<tr><td><input id="i96_47" name="option96_2" onclick="getFeedback(2,3,'96_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans96_47" style="display:block"><font face="verdana,geneva" size="3">Las dos respuestas anteriores son válidas.</font>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b96_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf96_5" style="display:block"><font face="verdana,geneva" size="3">INCOMPLETO.</font>
+</div></div>
+<div id="sa1b96_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf96_44" style="display:block"><font face="verdana,geneva" size="3">INCOMPLETO.</font>
+</div></div>
+<div id="sa2b96_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf96_47" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">CORRECTO, la faceta de descarte de variables no significativas se utiliza en la etapa de Análisis mientras que el establecimiento de relaciones funcionales lo es en la etapa de Mejora.</font><br/>
+</div>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id97">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta97_8" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">La conocida herramienta de regresión se utiliza -cuando tanto las x's como la y son variables de tipo continuo, asiduamente en Seis Sigma. Nótese que, en ese caso, una sola herramienta tiene la doble utilidad  que resaltamos en la pregunta anterior.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Ahora, si empleáramos esta herramienta para diseñar el helicóptero, ¿cuál cree usted que sería el error que cometeríamos en el diseño? </font>
+</p>
+</div><div id="view97" style="display:block;"><input class="feedbackbutton" name="btnshow97" onclick="showAnswer('97',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide97" style="display:none;"><input class="feedbackbutton" name="btnshow97" onclick="showAnswer('97',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s97" style=" display: none;"><div class="block" id="ta97_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Minitab nos muestra, en la ventana de sesión, el valor de la desviación típica de las diferencias entre los valores reales y la predicción. Esa es la mejor estimación del error del modelo.</font><br/>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="10_anlisis_grfico.html">« Anterior</a> | <a href="12_anova.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

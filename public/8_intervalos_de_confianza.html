@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 8. Intervalos de confianza </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div><a class="withoutChild" href="5_probabilidad.html">5. Probabilidad</a></div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div><a class="withoutChild" href="7_capacidad_de_proceso.html">7. Capacidad de proceso</a></div>
+<div class="withoutChild" id="active">8. Intervalos de confianza</div>
+<div><a class="withoutChild" href="9_contraste_de_hiptesis.html">9. Contraste de hipótesis</a></div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div><a class="withoutChild" href="11_regresin.html">11. Regresión</a></div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div><a class="withoutChild" href="14_doe_2_parte.html">14. DoE 2º parte</a></div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">8. Intervalos de confianza</p></div>
+<div class="FreeTextIdevice" id="id70">
+<div class="iDevice emphasis0">
+<div class="block" id="ta70_1" style="display:block"><p>
+<font face="verdana,geneva" size="3">Este módulo es la base del siguiente (Contraste de Hipótesis) cuyo objetivo es el de permitirnos identificar variables significativas que contribuyen a explicar la variabilidad observada en la medida de los procesos.</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">No constituye, pues, una herramienta Seis Sigma en sí misma, sino que se trata de un pre-conocimiento imprescindible para poder comprender los contrastes de hipótesis. </font>
+</p>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id71">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta71_22_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">El objetivo del módulo es que el alumno se familiarice con las técnicas de construcción de intervalos de confianza, tanto para los valores medios como para varianzas.</font><br/>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id72">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta72_23_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Las ideas generales del módulo 6, sobre Estadística Básica, son necesarios para poder comprender estos conceptos.</font><br/>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id73">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta73_24_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material básico de lectura es el archivo "8.pdf", que se divide en los siguientes bloques:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) transparencias 1 a 5.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<font size="3"><font face="verdana,geneva">Los conceptos básicos acerca de intervalos de confianza. Las transparencias 2 y 5 son las más importantes.</font></font>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) transparencias 6 a 18
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Cálculo de intervalos de confianza para valores medios.</font>
+</p>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 3) transparencias 19 a 23
+
+</font>
+</p>
+<div align="justify">
+</div>
+<div align="justify">
+</div>
+<blockquote>
+<font face="verdana,geneva" size="3">Cálculo de intervalos de confianza para varianzas.</font>
+</blockquote>
+<p>
+
+ 
+
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Téngase presente que una vez realizada la medida de los procesos, el paso siguiente es el de determinar los parámetros (media, varianza, etc) de los valores obtenidos. Normalmente tiene poco sentido hablar de un valor concreto para esos parámetros, sino que los estadísticos prefieren hablar en términos de un intervalo de valores dentro de los cuales se encontrará el "verdadero" valor del parámetro con una probabilidad determnada. </font>
+</p>
+</div><br/>
+<div class="block" id="ta73_24_5" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id74">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta74_10" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Un ejercicio interesante es el de realizar el cálculo del intervalo de confianza (para la media y la varianza) para los 20 valores de tiempos obtenidos para el cálculo de la capacidad de proceso.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Simplemente realícese el cálculo con Minitab. </font>
+</p>
+</div><div class="block" id="taquesQuestion0b74" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id75">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion75_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Si hemos determinado que el intervalo de confianza para la media del tiempo de vuelo de nuestro helicóptero está entre Ta y Tb con un nivel de confianza del 95%, esto significa que:</font>
+</div>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint75_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint75_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint75_2" style="display:block"><font face="verdana,geneva" size="3">Recuerde lo que aparece en la transparencia 2 y siguientes.</font>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i75_5" name="option75_2" onclick="getFeedback(0,3,'75_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans75_5" style="display:block"><font face="verdana,geneva" size="3">Diferentes muestras que obtuviésemos nos darían siempre el mismo resultado.</font>
+</div></td></tr>
+<tr><td><input id="i75_38" name="option75_2" onclick="getFeedback(1,3,'75_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans75_38" style="display:block"><font face="verdana,geneva" size="3">Hay un 95% de probabilidad de que el verdadero valor de la media esté entre Ta y Tb.</font>
+</div></td></tr>
+<tr><td><input id="i75_41" name="option75_2" onclick="getFeedback(2,3,'75_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans75_41" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">La media verdadera no puede ser nunca ni menor que Ta ni mayor que Tb.</font><br/>
+</div>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b75_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf75_5" style="display:block"><font face="verdana,geneva" size="3">NO, cada muestra nos daría un intervalo diferente.</font>
+</div></div>
+<div id="sa1b75_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf75_38" style="display:block"><font face="verdana,geneva" size="3">Correcto.</font>
+</div></div>
+<div id="sa2b75_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf75_41" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">NO, ténga presente que la muestra es algo aleatorio por lo que no podemos hablar en términos de certeza absoluta.</font><br/>
+</div>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id76">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta76_8" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Profundicemos un poco más en el concepto de intervalo de confianza. Imaginemos que tomamos un número elevado de muestras y que, para cada una de ellas, calculamos el intervalo de confianza al 95% para la media. ¿Qué cree que sucedería con estos intervalos y el "verdadero" valor de la media?</font><br/>
+</div>
+</div><div id="view76" style="display:block;"><input class="feedbackbutton" name="btnshow76" onclick="showAnswer('76',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide76" style="display:none;"><input class="feedbackbutton" name="btnshow76" onclick="showAnswer('76',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s76" style=" display: none;"><div class="block" id="ta76_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Ni más ni menos que el 95% de los intervalos así calculados contendrían al verdadero valor.</font><br/>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="7_capacidad_de_proceso.html">« Anterior</a> | <a href="9_contraste_de_hiptesis.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 7. Capacidad de proceso </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div><a class="withoutChild" href="5_probabilidad.html">5. Probabilidad</a></div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div class="withoutChild" id="active">7. Capacidad de proceso</div>
+<div><a class="withoutChild" href="8_intervalos_de_confianza.html">8. Intervalos de confianza</a></div>
+<div><a class="withoutChild" href="9_contraste_de_hiptesis.html">9. Contraste de hipótesis</a></div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div><a class="withoutChild" href="11_regresin.html">11. Regresión</a></div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div><a class="withoutChild" href="14_doe_2_parte.html">14. DoE 2º parte</a></div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">7. Capacidad de proceso</p></div>
+<div class="FreeTextIdevice" id="id63">
+<div class="iDevice emphasis0">
+<div class="block" id="ta63_1" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Recuerde ahora el alumno que la segunda etapa de la metodología Seis Sigma es la Medida. Para ello, y mediante los conocimientos adquiridos en los dos capítulos anteriores, habíamos recogido una serie de datos del proceso real (datos que habíamos validado como buenos mediante la técnica R&amp;R).</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Ahora es el momento de ver lo "bueno" que es el proceso; para ello vamos a calcular la capacidad del mismo es decir la fracción de producto conforme. Como resultado de la medida y del cálculo de capacidad del proceso la "foto" que nos habremos formado de la realidad será muy nítida. Además tenemos el diagrama del proceso, la otra componente del "cómo" se hacen las cosas. <br/>
+</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">¿Vamos entendiendo el método? Interesante, ¿verdad?: método científico en estado puro.</font>
+</p>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id64">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta64_22_2" style="display:block"><font face="verdana,geneva" size="3">El alumno será capaz de calcular la capacidad de un proceso mediante Minitab.</font>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id65">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta65_23_2" style="display:block"><font face="verdana,geneva" size="3">Los capítulos de Probabilidad y de Estadística Básica son necesarios para poder comprender los conceptos de este módulo.</font>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id66">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta66_24_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material básico de lectura es el archivo "7.pdf", que se divide en los siguientes bloques:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) transparencias 1 a 13.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<font size="3"><font face="verdana,geneva">Los conceptos básicos acerca de capacidad de proceso.</font></font>
+</blockquote>
+<div align="justify">
+<blockquote>
+<font face="verdana,geneva" size="3">
+
+	Las transparencias nº 4 y 5 muestran la dinámica temporal de un proceso típico, dividida en lo que suele llamarse corto plazo y largo plazo. 
+
+	</font>
+</blockquote>
+</div>
+<blockquote>
+<div align="justify">
+<font face="verdana,geneva" size="3">
+
+	Las transparencias nº 9 y 10 introducen el concepto de "Z" ó "nivel sigma" de un proceso, que no es sino otra forma de medir la capacidad del proceso. La transparencia nº 11 detalla la diferencia típica de 1,5 sigmas entre los niveles sigma a corto y a largo plazo.</font>
+</div>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) transparencia 14 a 21
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Un ejemplo completo, muy instructivo, que el alumno debe repetir íntegramente. Este ejemplo ilustra claramente los conceptos de corto plazo y de largo plazo, y nos muestra cómo se calcula la capacidad con Minitab.  </font>
+</p>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 3) transparencias 22 a 29
+
+</font>
+</p>
+<div align="justify">
+</div>
+<blockquote>
+<div align="justify">
+</div>
+<div align="justify">
+<font face="verdana,geneva" size="3">Un ejemplo completo de cálculo de capacidad con Minitab.</font>
+</div>
+<p>
+
+	 
+
+	</p>
+</blockquote>
+</div><br/>
+<div class="block" id="ta66_24_5" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id67">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta67_10" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Para calcular la capacidad del proceso actual, el alumno deberá obtener una cierta cantidad (unos 30, aproximadamente) de tiempos de vuelo asociados a  la producción. Estamos suponiendo que cada uno de los valores que obtenemos se corresponde con el resultado de la prueba de vuelo para una unidad diferente.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Para el cálculo de la capacidad con Minitab deberemos considerar que solo hay un límite inferior de especificación (LSL) igual a 1 seg.; todos los tiempos de vuelo superiores a ese valor será unidades correctas.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">El resultado de este cálculo ha de formar parte del caso. </font>
+</p>
+</div><div class="block" id="taquesQuestion0b67" style="display:block"></div><div id="viewq0b67" style="display:block;"><input class="feedbackbutton" name="btnshowq0b67" onclick="showAnswer('q0b67',1)" type="button" value="Mostrar Información"/>
+</div><div id="hideq0b67" style="display:none;"><input class="feedbackbutton" name="btnhideq0b67" onclick="showAnswer('q0b67',0)" type="button" value="Ocultar Información"/>
+<p></p></div><div class="feedback" id="sq0b67" style=" display: none;"><div class="block" id="taquesFeedback0b67" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+A modo de ejemplo, si se tratase de un proceso Z=4 0 "cuatro sigma", el aspecto del resultado de Minitab sería como sigue (téngase presente que en este caso no tiene sentido definir un tamaño de subgrupo -las medidas no podemos asociarlas a grupo alguno- por lo que debemos poner n=1):</font>
+</p>
+<p>
+
+ 
+
+</p>
+<p align="justify">
+<picture><source srcset="img/4sigma.webp" type="image/webp"/><img alt="" decoding="async" height="702" loading="lazy" src="img/4sigma.jpg" width="936"/></picture>
+</p>
+<p align="justify">
+<font size="3"><font face="verdana,geneva">La figura muestra claramente el significado de un proceso "4 sigma"</font> </font>
+</p>
+</div></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id68">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion68_2" style="display:block"><font face="verdana,geneva" size="3">El nivel sigma o Z de un proceso es:</font>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint68_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint68_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint68_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Recuerde las transparencias nº 9 a 11, y la ayuda de la aplicación al caso.</font>
+</div>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i68_5" name="option68_2" onclick="getFeedback(0,3,'68_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans68_5" style="display:block"><font face="verdana,geneva" size="3">El ancho de la especificación (USL-LSL) del proceso.</font>
+</div></td></tr>
+<tr><td><input id="i68_38" name="option68_2" onclick="getFeedback(1,3,'68_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans68_38" style="display:block"><font face="verdana,geneva" size="3">El valor de la desviación típica del proceso.</font>
+</div></td></tr>
+<tr><td><input id="i68_41" name="option68_2" onclick="getFeedback(2,3,'68_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans68_41" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">La relación entre la anchura de la especificación y el doble de la desviación típica.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Para el caso de tener solo un límite de especificación, lo anterior equivale a contar el número de desviaciones típicas existentes entre el valor medio de la distribución y el límite de especificación.  </font>
+</p>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b68_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf68_5" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">NO, cualquier medida de la capacidad de un proceso debe tener en cuenta tanto la anchura de especificación como la variabilidad del mismo.</font>
+</div>
+</div></div>
+<div id="sa1b68_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf68_38" style="display:block"><font face="verdana,geneva" size="3">NO, esta solo es la mitad de la película.</font>
+</div></div>
+<div id="sa2b68_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf68_41" style="display:block"><font face="verdana,geneva" size="3">ESTE ES EL CONCEPTO EXACTO DE "Z" O "NIVEL SIGMA"</font>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id69">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta69_8" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Llegado este punto es conveniente revisar el capítulo nº 1 Introducción. Lo que allí decíamos era que Seis Sigma pretende mejorar los procesos a través del previo conocimiento de los mismos.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Lo que llevamos visto hasta ahora nos permite saber los pasos del proceso y el resultado final del mismo. ¿Se aprecia como los diferentes módulos van encajando dentro del contexto de la metodología como las piezas de un puzzle? </font>
+</p>
+</div><div id="view69" style="display:block;"><input class="feedbackbutton" name="btnshow69" onclick="showAnswer('69',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide69" style="display:none;"><input class="feedbackbutton" name="btnshow69" onclick="showAnswer('69',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s69" style=" display: none;"><div class="block" id="ta69_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Uno de los aspectos más importantes de la metodología es que mediante la puesta en orden de una serie de herramientas ya conocidas pero, digamos, dispersas podemos construir un edificio lógico que nos permite el análisis científico de los datos reales del proceso.</font><br/>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="6_estadstica_bsica.html">« Anterior</a> | <a href="8_intervalos_de_confianza.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 14. DoE 2º parte </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div><a class="withoutChild" href="5_probabilidad.html">5. Probabilidad</a></div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div><a class="withoutChild" href="7_capacidad_de_proceso.html">7. Capacidad de proceso</a></div>
+<div><a class="withoutChild" href="8_intervalos_de_confianza.html">8. Intervalos de confianza</a></div>
+<div><a class="withoutChild" href="9_contraste_de_hiptesis.html">9. Contraste de hipótesis</a></div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div><a class="withoutChild" href="11_regresin.html">11. Regresión</a></div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div class="withoutChild" id="active">14. DoE 2º parte</div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">14. DoE 2º parte</p></div>
+<div class="FreeTextIdevice" id="id112">
+<div class="iDevice emphasis0">
+<div class="block" id="ta112_1" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Existen muchos tipos de DoE; los más simples y de aplización más generalizada son los diseños completos y los fraccionarios, vistos en el módulo anterior.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Entre los más avanzados podemos encontrar a los modelos de superficie de respuesta, que introduciremos en este capítulo. Aunque no vamos a hacer una aplicación concreta de esta herramienta para el caso de nuestro helicóptero, sí vamos a comentar los detalles básicos con el fin de que sirva al estudiante como referencia para ulteriores estudios que pudiese abordar.</font>
+</p>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id113">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta113_22_2" style="display:block"><font face="verdana,geneva" size="3">Introducir al alumno en las ideas básicas asociadas a las técnicas de superficie de respuesta.</font>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id114">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta114_23_2" style="display:block"><font face="verdana,geneva" size="3">Es necesario haber completado el módulo 13, DoE 1º parte.</font>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id115">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta115_24_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material básico de lectura es el archivo "14.pdf", que se divide en los siguientes bloques:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) transparencias 1 a 16.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<font size="3"><font face="verdana,geneva">Introducción del concepto de punto central. Las transparencias más importantes son las nº 8
+
+	y nº 16, donde se aprecia claramente tanto el significado geométrico del punto central como se determina su significación estadística.</font></font>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) transparencias 17 a 23.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Donde se sustituye el punto central por un moelo de superficie de respuesta, naturalmente más potente, que nos permitirá determinar la existencia de efectos de segundo orden.</font>
+</p>
+</blockquote>
+</div>
+<blockquote>
+</blockquote>
+<font face="verdana,geneva" size="3">
+
+Bloque 3) transparencias 24 a 30.
+
+</font>
+<blockquote>
+</blockquote>
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Se muestran una serie de posibilidades de representación gráfica y de optimización de las ecuaciones de predicción obtenidas por Minitab. Estas transperenias muestran las grandes posibilidades que ofrece Minitab para trabajar con modelos de orden superior.</font>
+</p>
+</blockquote>
+<p align="justify">
+<font face="verdana,geneva" size="3">Bloque 4) transparencias 31 a 60.
+
+</font>
+</p>
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Se muestran los dos tipos de diseño de superficie de respuesta más populares: el CCD (Central Composate Design) y el BBD (Box-Benken Design).</font>
+</p>
+</blockquote>
+<p>
+<font face="verdana,geneva" size="3">Lo más importante es que el alumno repita los ejemplos propuestos, paso a paso.</font>
+</p>
+<blockquote>
+</blockquote>
+</div><br/>
+<div class="block" id="ta115_24_5" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id116">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta116_10" style="display:block"><font face="verdana,geneva" size="3">Este módulo no tiene aplicación al caso.</font>
+</div><div class="block" id="taquesQuestion0b116" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id117">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion117_2" style="display:block"><font face="verdana,geneva" size="3">Los experimentos de Superficie de Respuesta son útiles:</font>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint117_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint117_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint117_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Piense en la expresión matemática de las relaciones causa-efecto. ¿Qué limitaciones tenían los modelos que vimos en el módulo anterior?</font><br/>
+</div>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i117_5" name="option117_2" onclick="getFeedback(0,3,'117_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans117_5" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Cuando las relaciones son de tipo lineal, incluyendo interacciones entre variables.</font><br/>
+</div>
+</div></td></tr>
+<tr><td><input id="i117_38" name="option117_2" onclick="getFeedback(1,3,'117_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans117_38" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Cuando existen efectos de segundo orden, además de interacciones o efectos de primer orden.</font><br/>
+</div>
+</div></td></tr>
+<tr><td><input id="i117_41" name="option117_2" onclick="getFeedback(2,3,'117_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans117_41" style="display:block"><font face="verdana,geneva" size="3">Cuando existen términos cruzados.</font>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b117_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf117_5" style="display:block"><font face="verdana,geneva" size="3">¡NO!</font>
+</div></div>
+<div id="sa1b117_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf117_38" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">¡Exacto! Los modelos anteriores no nos permiten la introducción de términos de segundo orden, por lo que si existe curvatura ésta no podrá ser detectada y los residuales presentarán comportamientos anormales. </font><br/>
+</div>
+</div></div>
+<div id="sa2b117_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf117_41" style="display:block"><font face="verdana,geneva" size="3">¡NO!, los modelos anteriores son capaces de tratar este tipo de interacción.</font>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id118">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta118_8" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Deténgase un momento el alumno a pensar sobre la enorme potencia de que se dispone cuando, trabajando con Minitab, se pretende encontrar la combinación de variables x's que resultan en un valor y deseado cuando las relaciones son de segundo orden.</font><br/>
+</div>
+</div><div id="view118" style="display:block;"><input class="feedbackbutton" name="btnshow118" onclick="showAnswer('118',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide118" style="display:none;"><input class="feedbackbutton" name="btnshow118" onclick="showAnswer('118',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s118" style=" display: none;"><div class="block" id="ta118_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">¡La transparencia nº 60 es impresionante! En ella se tiene claramente definido el dominio de valores x's para el cual la salida toma un valor dado (o un intervalo de valor dado) Soloo resta superponer a esta gráfica la correspondiente representación del coste para poder dar con el óptimo técnico-económico.</font><br/>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="13_doe_1_parte.html">« Anterior</a> | <a href="15_control.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

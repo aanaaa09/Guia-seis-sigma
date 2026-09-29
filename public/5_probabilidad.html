@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 5. Probabilidad </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div class="withoutChild" id="active">5. Probabilidad</div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div><a class="withoutChild" href="7_capacidad_de_proceso.html">7. Capacidad de proceso</a></div>
+<div><a class="withoutChild" href="8_intervalos_de_confianza.html">8. Intervalos de confianza</a></div>
+<div><a class="withoutChild" href="9_contraste_de_hiptesis.html">9. Contraste de hipótesis</a></div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div><a class="withoutChild" href="11_regresin.html">11. Regresión</a></div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div><a class="withoutChild" href="14_doe_2_parte.html">14. DoE 2º parte</a></div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">5. Probabilidad</p></div>
+<div class="FreeTextIdevice" id="id48">
+<div class="iDevice emphasis0">
+<div class="block" id="ta48_1" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">En este módulo se busca dar un repaso general a los conceptos básicos de probabilidad, punto de partida para el estudio de la estadística en sí. La razón de ser de este módulo es conseguir que el estudiante de Seis Sigma se familiarice con el concepto básico inherente a cualquier proceso aleatorio: los resultados de los casos individuales no son predecibles, mientras que podemos hacer conjeturas razonables sobre el comportamiento de un gran número de casos provenientes de un mismo proceso estable. </font><br/>
+</div>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id49">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta49_22_2" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+Los objetivos de este módulo son los siguientes:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+a) realizar simulaciones elementales de números aleatorios con Excel.
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+b) conocimiento general de las siete reglas de la probabilidad.</font>
+</p>
+<div align="justify">
+<font face="verdana,geneva" size="3">c) conocimiento eneral de probabilidad en serie, en paralelo y de árboles de decisión.</font>
+</div>
+<p>
+
+ 
+
+</p>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id50">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta50_23_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Sería deseable, aunque no imprescindible, algún conocimiento previo sobre probabilidad y estadística.</font><br/>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id51">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta51_24_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material de lectura es el archivo "5.pdf" del material de clase, que se encuentra claramente dividido en: 
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) general introductorio (transparencias 1 a 10) 
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) siete reglas de probabilidad  (transparencias 11 a 18)</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 3) aplicaciones de reglas de probabilidad  (transparencias 19 a 29)</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Nota: No se complique el alumno demasiado la vida con el método de la Tabla de Verdad (transparencias 26 a 29, para resolver el problema de la nº 25); la transparencia 30 resuelve lo mismo de forma mucho más intuitiva. </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 4) árbol de decisión (transparencia 30) </font>
+</p>
+</div><br/>
+<div class="block" id="ta51_24_5" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Se sugiere al alumno que obtenga de forma práctica los resultados de la transparencia 6 (lanzamientos de un solo dado) y la 8 (lanzamientos de dos dados simultáneos). ¡No es necesario lanzar los dados 500 veces, con 50 es suficiente para poder apreciar el comportamiento aleatorio del proceso!</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Posteriormente se sugiere trabajar en la simulación numérica de datos mediante Excel. El alumno deberá insatarse el complemento para el análisis de datos (Herramientas&gt;&gt;Complementos). Con esto se pueden simular datos de una cierta variedad de procesos (bernouilli, Poisson, normal, etc.)</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Vamos a simular los lanzamientos de los dados. Lo primero es construir la tabla de probabilidad (ver transparencia nº 9), tenemos:</font>
+</p>
+<p>
+
+ 
+
+</p>
+<p align="justify">
+<picture><source srcset="img/dados1.webp" type="image/webp"/><img alt="" decoding="async" height="429" loading="lazy" src="img/dados1.jpg" width="461"/></picture>
+</p>
+<p>
+<font face="verdana,geneva" size="3">Haga Herramientas&gt;&gt;Análisis de Datos&gt;&gt;Generación de Números Aleatorios </font>
+</p>
+<p>
+
+ 
+
+</p>
+<p align="center">
+<picture><source srcset="img/dados2.webp" type="image/webp"/><img alt="" decoding="async" height="695" loading="lazy" src="img/dados2.jpg" width="750"/></picture>
+</p>
+<p align="justify">
+
+ 
+
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3"> Ahora genere el Histograma, haciendo Herramientas&gt;&gt;Análisis de Datos&gt;&gt;Histograma</font>
+</p>
+<p align="justify">
+
+ 
+
+</p>
+<p align="center">
+<picture><source srcset="img/dados3.webp" type="image/webp"/><img alt="" decoding="async" height="691" loading="lazy" src="img/dados3.jpg" width="685"/></picture>
+</p>
+<p align="justify">
+
+ 
+
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Y... ¡ya tenemos nuestro histograma! </font>
+</p>
+<p>
+
+ 
+
+</p>
+</div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id52">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta52_10" style="display:block"><font face="verdana,geneva" size="3">Este módulo no tiene aplicación al caso.</font>
+</div><div class="block" id="taquesQuestion0b52" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id53">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion53_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">¿Cómo podríamos inferir, de un modo puramente empírico, el valor de la probabilidad de un suceso aleatorio?</font><br/>
+</div>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint53_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint53_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint53_2" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Lo que estamos tratando aquí es acerca de los valores experimentales de la probabilidad, sin entrar para nada en el análisis de los procesos aleatorios. "Observar antes que pensar" o "Observar para poder pensar mejor"</font>
+</p>
+<p>
+
+ 
+
+</p>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i53_5" name="option53_2" onclick="getFeedback(0,3,'53_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans53_5" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Lo más sencillo es observar un gran número de veces el resultado del proceso en funcionamiento, y calcular la relación entre el número de casos favorables y el número de casos posibles.</font>
+</div>
+</div></td></tr>
+<tr><td><input id="i53_46" name="option53_2" onclick="getFeedback(1,3,'53_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans53_46" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">No se puede determinar la probabilidad de un suceso mediante la observación del mismo, puesto que el resultado es impredecible en cada caso.</font>
+</div>
+</div></td></tr>
+<tr><td><input id="i53_49" name="option53_2" onclick="getFeedback(2,3,'53_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans53_49" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">La observación del proceso real no aporta mucha utilidad, dado que el resultado será diferente cada vez.</font>
+</div>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b53_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf53_5" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">EXACTO, esta es la definición clásica de probabilidad según Laplace.</font><br/>
+</div>
+</div></div>
+<div id="sa1b53_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf53_46" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">INCORRECTO, calcular la probabilidad de un suceso no tiene nada que ver con ser capaces de predecir qué sucederá con el proceso la próxima vez. De hecho son conceptos contradictorios.</font><br/>
+</div>
+</div></div>
+<div id="sa2b53_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf53_49" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">INCORRECTO. Es cierto que el resultado diferirá, en cierta medida, para observaciones diferentes y aunque no podemos hablar de un límite en sentido matemático sí es cierto que para los fines prácticos que nos ocupa el "límite" a que convergen los resultados de las observaciones son lo suficientemente válidos.</font>
+</div>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id54">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta54_8" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">No cabe duda que la introducción de conceptos probabilísticos en los temas de mejora de procesos complica de forma importante el tratamiento de éstos. ¿Por qué cree el alumno que nos metemos en semejante complicación?</font>
+</div>
+</div><div id="view54" style="display:block;"><input class="feedbackbutton" name="btnshow54" onclick="showAnswer('54',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide54" style="display:none;"><input class="feedbackbutton" name="btnshow54" onclick="showAnswer('54',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s54" style=" display: none;"><div class="block" id="ta54_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Vuelva al capítulo introductorio ("1.pdf", transparencias nº 15 y 16) No se trata de un capricho sino de una necesidad...TODOS los procesos de producción tienen alguna componente aleatoria para cuyo tratamiento no hay más remedio que echar mano de las técnicas estadísticas. </font>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="4_r__r.html">« Anterior</a> | <a href="6_estadstica_bsica.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

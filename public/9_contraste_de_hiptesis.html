@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 9. Contraste de hipótesis </title>
+<meta content="text/html;  charset=utf-8" http-equiv="Content-Type"/>
+<script src="common.js" type="text/javascript"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>
+/* Ajustes para hacer responsive el contenido original de eXeLearning */
+meta[name="viewport"] { content: "width=device-width, initial-scale=1.0, viewport-fit=cover"; }
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+img, picture, svg, video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+#content, #main, .iDevice {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+</style></head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a class="withChild" href="index.html">Calidad: Seis Sigma</a></div>
+<div><a class="withoutChild" href="0_cmo_utilizar_esta_gua.html">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a class="withoutChild" href="1_introduccin.html">1. Introducción</a></div>
+<div><a class="withoutChild" href="2_diagrama_de_procesos.html">2. Diagrama de procesos</a></div>
+<div><a class="withoutChild" href="3_minitab.html">3. Minitab</a></div>
+<div><a class="withoutChild" href="4_r__r.html">4. R &amp; R</a></div>
+<div><a class="withoutChild" href="5_probabilidad.html">5. Probabilidad</a></div>
+<div><a class="withoutChild" href="6_estadstica_bsica.html">6. Estadística básica</a></div>
+<div><a class="withoutChild" href="7_capacidad_de_proceso.html">7. Capacidad de proceso</a></div>
+<div><a class="withoutChild" href="8_intervalos_de_confianza.html">8. Intervalos de confianza</a></div>
+<div class="withoutChild" id="active">9. Contraste de hipótesis</div>
+<div><a class="withoutChild" href="10_anlisis_grfico.html">10. Análisis gráfico</a></div>
+<div><a class="withoutChild" href="11_regresin.html">11. Regresión</a></div>
+<div><a class="withoutChild" href="12_anova.html">12. Anova</a></div>
+<div><a class="withoutChild" href="13_doe_1_parte.html">13. DoE 1º parte</a></div>
+<div><a class="withoutChild" href="14_doe_2_parte.html">14. DoE 2º parte</a></div>
+<div><a class="withoutChild" href="15_control.html">15. Control</a></div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">9. Contraste de hipótesis</p></div>
+<div class="FreeTextIdevice" id="id77">
+<div class="iDevice emphasis0">
+<div class="block" id="ta77_1" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Ahora ha llegado el momento de empezar a analizar los datos recogidos de una forma científica, con el fin de poder tomar decisiones sobre la verdadera incidencia o no de determinadas variables.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">En resumen, y a modo de ejemplo desde un punto de vista Seis Sigma, la idea es la siguiente: un conjunto de datos ha sido recogido en el turno de mañana y otro lo ha sido en el turno de noche. Excepto por esa diferencia, el resto de las variables de entrada ha permanecido constante. Si mediante la herramienta de los contrastes de hipótesis pudiésemos demostrar que ambos conjuntos de datos son diferentes (p. ej. que tienen una media diferente) entonces concluiríamos que la variable "turno" afecta de modo significativo a la media. </font>
+</p>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id78">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div class="block" id="ta78_29_2" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+Los objetivos del módulo son los siguientes:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+a) comprender los rudimentos de los contrastes de hipótesis más usuales.
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+b) ser capaz de realizar esos test mediante Minitab.</font>
+</p>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id79">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div class="block" id="ta79_30_2" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Los módulos 6, Estadística Básica, y 8, Intervalos de Confianza,  son básicos para poder abordar el presente módulo. </font><br/>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id80">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice" class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div class="block" id="ta80_31_4" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+El material básico de lectura es el archivo "9.pdf", que se divide en los siguientes bloques:
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 1) transparencias 1 a 19.
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<font size="3"><font face="verdana,geneva">Los conceptos básicos acerca de contrastes de hipótesis, ejemplificadas para los cálculos de medias. Las transparencias 7, 9, 10 y 11  son las más importantes. La 15 es el resumen de los test de hipótesis más habituales.</font></font>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 2) transparencias 20 a 24
+
+</font>
+</p>
+<div align="justify">
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Cálculo de </font><font size="3"><font face="verdana,geneva">contrastes de hipótesis</font></font><font face="verdana,geneva" size="3"> para</font><font face="verdana,geneva" size="3"> varianzas</font><font face="verdana,geneva" size="3">.</font>
+</p>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Bloque 3) transparencias 25 a 27
+
+</font>
+</p>
+<div align="justify">
+</div>
+<div align="justify">
+</div>
+<blockquote>
+<font face="verdana,geneva" size="3">Cálculo de </font><font size="3"><font face="verdana,geneva">contrastes de hipótesis</font></font><font face="verdana,geneva" size="3"> para</font><font face="verdana,geneva" size="3"> datos de atributo.</font>
+</blockquote>
+<p>
+
+ 
+
+</p>
+<font face="verdana,geneva" size="3">Téngase presente que, como muestra la transparencia 11, existe una gran variedad de contrastes de hipótesis que se pueden realizar en la práctica aunque los conceptos que subyacen detrás de todos ellos son siempre los mismos. </font>
+</div><br/>
+<div class="block" id="ta80_31_5" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id81">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div class="block" id="ta81_10" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+Vamos a realizar una serie de cálculos en los que, partiendo de un diseño estándar (ver el apartado de Introducción para  recordar las características de un modelo estándar) perturbemos una a una  un cierto número (cinco, al menos) de variables.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Para cada uno de esos modelos diferentes vamos a recoger cinco (5) medidas, como si fabricásemos cinco helicópteros iguales. Estos conjuntos de datos serán objeto de los ensayos de hipótesis (medias y varianzas) que realizaremos con el fin de comprobar si cada variable influye o no en el tiempo de vuelo. </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">El resultado de todas estas pruebas formará parte del ejercicio del caso. </font>
+</p>
+</div><div class="block" id="taquesQuestion0b81" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id82">
+<script src="common.js" type="text/javascript"></script>
+<script src="libot_drag.js" type="text/javascript"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta" class="iDevice_icon" src="icon_question.gif"/>
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div class="block" id="taquestion82_2" style="display:block"><p>
+<font face="verdana,geneva" size="3">Supongamos el siguiente ensayo de hipótesis,</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3"> </font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">a) Hipótesis</font>
+</p>
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">H0 : Media = 1,5</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">Ha : Media &lt; 1,5</font>
+</p>
+</blockquote>
+<p>
+<font face="verdana,geneva" size="3">b) Probabilidades</font>
+</p>
+<blockquote>
+<p>
+<font face="verdana,geneva" size="3">Alfa : 0,05</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">Beta : 0,10</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">P-Valor : 0,07</font>
+</p>
+</blockquote>
+<p>
+<font face="verdana,geneva" size="3">Las conclusiones serían: </font>
+</p>
+<p>
+
+ 
+
+</p>
+<p>
+
+ 
+
+</p>
+</div>   
+<span style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint82_2', 350, 100);" onmouseover="javascript:void(0);" style="cursor:help;align:center;vertical-align:middle;" title="Hint">    </a></span><div id="hint82_2" style="display:none; z-index:99;"><div style="float:right;"><picture><source srcset="img/stock-stop.webp" type="image/webp"/><img alt="Cerrar" decoding="async" height="16" loading="lazy" src="img/stock-stop.jpg" width="16"/></picture></div><div class="popupDivLabel">Sugerencia</div>
+<div class="block" id="tahint82_2" style="display:block"><font face="verdana,geneva" size="3">Recordar siempre el protocolo de los ensayos de hipótesis, transparencia nº 7.</font>
+</div></div>
+<table>
+<tbody>
+<tr><td><input id="i82_5" name="option82_2" onclick="getFeedback(0,3,'82_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans82_5" style="display:block"><font face="verdana,geneva" size="3">No rechazamos la hipótesis nula puesto que P-valor es inferior a Beta.</font>
+</div></td></tr>
+<tr><td><input id="i82_44" name="option82_2" onclick="getFeedback(1,3,'82_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans82_44" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">No rechazamos la hipótesis nula puesto que P-valor es mayor que Alfa. La media es, por tanto, mayor o igual que 1,5. </font><br/>
+</div>
+</div></td></tr>
+<tr><td><input id="i82_47" name="option82_2" onclick="getFeedback(2,3,'82_2','multi')" type="radio"/></td><td>
+<div class="block" id="taans82_47" style="display:block"><font face="verdana,geneva" size="3">Tenemos un problema puesto que el test ha fallado (no hemos podido rechazar la hipótesis nula), habría que repetirlo a ver qué pasa en el segundo intento.</font>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b82_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf82_5" style="display:block"><font face="verdana,geneva" size="3">NO, P-valor no debe compararse con Beta sino con Alfa.</font>
+</div></div>
+<div id="sa1b82_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf82_44" style="display:block"><font face="verdana,geneva" size="3">¡Correcto!</font>
+</div></div>
+<div id="sa2b82_2" style="color: rgb(0, 51, 204);display: none;"><div class="block" id="taf82_47" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">NO, grave error. Nunca hay que repetir el test para que nos dé "lo que queremos que nos dé". Si el tamaño de muestra fuese suficiente y la potencia del test (la Beta real que resulta con los datos obtenidos para la prueba) aceptable (parecida a la Beta de diseño) el testy sería correcto y no tendría sentido "forzarlo".</font><br/>
+</div>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id83">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon" src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script src="common.js" type="text/javascript"></script>
+<div class="iDevice_inner">
+<div class="block" id="ta83_8" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+
+La aplicación al caso que se ha propuesto es la forma habitual de trabajo que se emplea en Seis Sigma para analizar un conjunto de datos histórico; aunque parezca algo rudimentario y laborioso, con un poco de soltura en el manejo de Minitab en un rato se pueden sacar conclusiones muy útiles sobre la dinámica de los procesos.
+
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+
+Pero tenemos el problema de los cruces de variables, es decir situaciones en que no podríamos decir si una diferencia realmente observada se debe a la variable x1 o a la x2, ¿qué podríamos hacer en ese caso?</font>
+</p>
+</div><div id="view83" style="display:block;"><input class="feedbackbutton" name="btnshow83" onclick="showAnswer('83',1)" type="button" value="Click aquí"/>
+</div>
+<div id="hide83" style="display:none;"><input class="feedbackbutton" name="btnshow83" onclick="showAnswer('83',0)" type="button" value="Ocultar"/>
+</div>
+<div class="feedback" id="s83" style=" display: none;"><div class="block" id="ta83_9" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Muy sencillo, construir más prototipos en los que dejásemos libres las variables que aparecen confundidas (este término es clave, y volveremos a él  en el módulo de Diseño de Experimentos) para salir de dudas.</font>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+<div align="right" class="noprt"><a href="8_intervalos_de_confianza.html">« Anterior</a> | <a href="10_anlisis_grfico.html"> Siguiente »</a></div>
+</div>
+</div>
+</body></html>

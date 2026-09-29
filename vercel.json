@@ -1,13 +1,7 @@
 {
-  "builds": [
-    {
-      "src": "scripts/build.py",
-      "use": "@vercel/python",
-      "config": {
-        "zeroConfig": false
-      }
-    }
-  ],
+  "buildCommand": "python scripts/build.py \"Guia Calidad Seis Sigma\"",
+  "installCommand": "pip install -r requirements.txt",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

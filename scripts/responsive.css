@@ -1,58 +1,89 @@
-/*
- * responsive.css — capa responsive ADITIVA para el export eXeLearning original.
- * Todo está dentro de @media (max-width): en pantallas grandes no se aplica nada
- * y el sitio se ve igual que el original.
- * No cambia colores, tipografías ni tamaños de fuente.
- */
+/* ==========================================================================
+   responsive.css — Corrección de maquetación y adaptabilidad para eXeLearning
+   ========================================================================== */
 
-/* ---------- Tablet y menor (<= 1024px) ---------- */
-@media (max-width: 1024px) {
-  body { min-width: 0; overflow-wrap: break-word; word-wrap: break-word; }
-  img, video, iframe, object, embed, canvas { max-width: 100%; }
-  img, video { height: auto; }
-  pre { max-width: 100%; overflow-x: auto; }
-  input, select, textarea { max-width: 100%; }
+/* 1. Correcciones globales (Aplica a pantallas de cualquier tamaño) */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
 }
 
-/* ---------- Tablet vertical y móvil (<= 768px) ---------- */
-@media (max-width: 768px) {
-  /* Contenedores de maquetación: anchos fijos -> fluidos */
-  html, body { width: auto; max-width: 100%; }
-  #outer, #wrapper, #container, #page, #main, #content, #header, #footer,
-  #nav, #navcontainer, #nodeDecoration, #topPagination, #bottomPagination,
-  .iDevice, .iDevice_inner, .iDevice_content, .block {
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    box-sizing: border-box;
-  }
-
-  /* Columnas / menú lateral flotante -> apilado */
-  #nav, #navcontainer, #main, #content, #header, #footer {
-    float: none !important;
+/* Desactivar posicionamientos absolutos que hacen que el menú se solape */
+#siteNav, #main, #content, #header, #footer, .iDevice {
     position: static !important;
-    clear: both;
-  }
-  #main, #content { margin-left: 0 !important; margin-right: 0 !important; }
-
-  /* Bloques genéricos nunca más anchos que la pantalla */
-  div, p, ul, ol, dl, blockquote, form, fieldset, pre, table {
-    max-width: 100%;
-  }
-
-  /* Tablas anchas: scroll dentro de la propia tabla, no de la página */
-  table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Imágenes flotantes -> en línea para no estrechar el texto */
-  img[align], img[style*="float"] { float: none !important; }
+    float: none !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
 }
 
-/* ---------- Móvil pequeño (<= 480px) ---------- */
-@media (max-width: 480px) {
-  /* Solo márgenes laterales del contenedor principal; no se tocan las fuentes */
-  #main, #content { padding-left: 8px !important; padding-right: 8px !important; }
+/* Contenedor flexible principal */
+#content {
+    display: flex !important;
+    flex-direction: column !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 15px !important;
+    gap: 20px !important;
+}
+
+/* Estructura del menú de navegación original */
+#siteNav {
+    width: 100% !important;
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 10px !important;
+}
+
+#siteNav ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+
+#siteNav a {
+    display: block !important;
+    padding: 6px 10px !important;
+    word-break: break-word !important;
+}
+
+/* Área de contenido de la lección */
+#main {
+    flex: 1 !important;
+    min-width: 0 !important; /* Evita desbordamiento de contenedores flexibles */
+}
+
+/* Elementos multimedia fluidos */
+img, picture, svg, video, iframe {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Tablas adaptables con desplazamiento */
+table {
+    display: block !important;
+    overflow-x: auto !important;
+    max-width: 100% !important;
+}
+
+/* 2. Dispositivos de escritorio / Pantallas anchas (>= 850px) */
+@media (min-width: 850px) {
+    #content {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+    }
+
+    #siteNav {
+        width: 260px !important;
+        flex-shrink: 0 !important;
+        position: sticky !important;
+        top: 15px !important;
+        max-height: calc(100vh - 30px) !important;
+        overflow-y: auto !important;
+    }
 }

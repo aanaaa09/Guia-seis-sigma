@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Created using eXe: http://exelearning.org -->
+<head>
+<style type="text/css">
+@import url(base.css);
+@import url(content.css);
+@import url(nav.css);</style>
+<title> 15. Control </title>
+<meta http-equiv="Content-Type" content="text/html;  charset=utf-8" />
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="navcontainer">
+<ul id="navlist">
+<div><a href="index.html" class="withChild">Calidad: Seis Sigma</a></div>
+<div><a href="0_cmo_utilizar_esta_gua.html" class="withoutChild">0. ¿Cómo utilizar esta Guía?</a></div>
+<div><a href="1_introduccin.html" class="withoutChild">1. Introducción</a></div>
+<div><a href="2_diagrama_de_procesos.html" class="withoutChild">2. Diagrama de procesos</a></div>
+<div><a href="3_minitab.html" class="withoutChild">3. Minitab</a></div>
+<div><a href="4_r__r.html" class="withoutChild">4. R &amp; R</a></div>
+<div><a href="5_probabilidad.html" class="withoutChild">5. Probabilidad</a></div>
+<div><a href="6_estadstica_bsica.html" class="withoutChild">6. Estadística básica</a></div>
+<div><a href="7_capacidad_de_proceso.html" class="withoutChild">7. Capacidad de proceso</a></div>
+<div><a href="8_intervalos_de_confianza.html" class="withoutChild">8. Intervalos de confianza</a></div>
+<div><a href="9_contraste_de_hiptesis.html" class="withoutChild">9. Contraste de hipótesis</a></div>
+<div><a href="10_anlisis_grfico.html" class="withoutChild">10. Análisis gráfico</a></div>
+<div><a href="11_regresin.html" class="withoutChild">11. Regresión</a></div>
+<div><a href="12_anova.html" class="withoutChild">12. Anova</a></div>
+<div><a href="13_doe_1_parte.html" class="withoutChild">13. DoE 1º parte</a></div>
+<div><a href="14_doe_2_parte.html" class="withoutChild">14. DoE 2º parte</a></div>
+<div id="active" class="withoutChild">15. Control</div>
+</ul>
+</div>
+<div id="main">
+<div id="nodeDecoration"><p id="nodeTitle">15. Control</p></div>
+<div class="FreeTextIdevice" id="id119">
+<div class="iDevice emphasis0">
+<div id="ta119_1" class="block" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Cuando hablamos de control de procesos nos referimos a dos grandes áreas; la primera es lo que históricamente se llama &quot;control estadístico de procesos&quot; y trata -básicamente- del empleo de gráficas de control. Esto no es sino una vigilancia inteligente (estadística) de los procesos por parte de quién tiene la tarea de controlarlo.<br />
+</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">La segunda de estas áreas es lo que podríamos llamar &quot;autocontrol&quot; del proceso y tiene que ver con métodos ingeniosos que aseguran que, pase lo que pase y sin necesidad de intervención por parte del operario, el proceso se va a mantener estable dentro de los parámetros establecidos.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">El módulo debe ser abordado teniendo en cuenta esa distinción </font>
+</p>
+</div></div>
+</div>
+<div class="objectivesIdevice" id="id120">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice"      class="iDevice_icon" src="icon_objectives.gif"/>
+<span class="iDeviceTitle">Objetivos</span>
+<div class="iDevice_inner">
+<div id="ta120_22_2" class="block" style="display:block"><p>
+<font face="verdana,geneva" size="3">
+Los objetivos del módulo son:</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">a) el alumno será capaz de construir e interpretar los resultados de las gráficas de control más habituales.</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">b) el alumno comprenderá los fundamentos de los métodos anti-error. </font>
+</p>
+<p>
+&nbsp;
+</p>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="preknowledgeIdevice" id="id121">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice"      class="iDevice_icon" src="icon_preknowledge.gif"/>
+<span class="iDeviceTitle">Pre-conocimiento</span>
+<div class="iDevice_inner">
+<div id="ta121_23_2" class="block" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Para comprender los fundamentos de las gráficas de control es necesario tener claro el capítulo 6, Estadística Básica. Los métodos anti-error no necesitan de preconocimiento.</font>
+</div>
+</div><br/>
+</div>
+</div>
+</div>
+<div class="readingIdevice" id="id122">
+<div class="iDevice emphasis1">
+<img alt="Icono IDevice"      class="iDevice_icon" src="icon_reading.gif"/>
+<span class="iDeviceTitle">Actividad de Lectura</span>
+<div class="iDevice_inner">
+<div id="ta122_24_4" class="block" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">
+El material básico de lectura es el archivo &quot;15.pdf&quot;, que se divide en los siguientes bloques:
+</font>
+</p>
+<div align="justify">
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+Bloque 1) transparencias 1 a 13.
+</font>
+</p>
+<div align="justify">
+<blockquote>
+	<font size="3"><font face="verdana,geneva">Los conceptos
+	básicos acerca de control de procesos, errores y defectos, etc.</font></font>
+</blockquote>
+</div>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+Bloque 2) transparencias 10 a 16.
+</font>
+</p>
+<p>
+<font face="verdana,geneva" size="3">Métodos antierror (Poka-Yoke, en japonés). Aquí sugerimos que el alumno busque en Internet diferentes ejemplos de sistemas antierror de los que habitualmente tenemos en nuestras casas. Es una tarea entretenida y nos llevaremos más de una sorpresa.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">El alumno descubrirá, rápidamente, que este tema es muy sencillo. Pero no se deje usted llevar por las apariencias: en lo simple está muchas veces lo importante. </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">
+Bloque 3) transparencias 17 a 31.
+</font>
+</p>
+<font face="verdana,geneva" size="3">Gráficas de control.<br />
+</font>
+<p>
+&nbsp;
+</p>
+</div><br/>
+<div id="ta122_24_5" class="block" style="display:block"></div><br/>
+<br/>
+</div>
+</div>
+</div>
+<div class="CasestudyIdevice" id="id123">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon"  src="icon_casestudy.gif"/>
+<span class="iDeviceTitle">Caso de estudio</span>
+<div class="iDevice_inner">
+<div id="ta123_10" class="block" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Una vez que se tenga identificada la variable que más fuertemente condiciona al tiempo de vuelo del helicóptero se sugiere trabajar (ingenio puro...) en algún método simple y robusto que impida o al menos reduzca fuertemente la probabilidad que durante el proceso de fabricación de los helicópteros esa variable salga de los límites fijados durante el diseño.</font>
+</div>
+<div align="justify">
+<font face="verdana,geneva" size="3">El profesor os ayudará en esta tarea, pero para ello hay que partir de vuestras ideas. Téngase presente que aquí no buscamos &quot;LA&quot; solución, sino solo una buena solución. </font>
+</div>
+</div><div id="taquesQuestion0b123" class="block" style="display:block"></div><br/>
+</div>
+</div>
+</div>
+<div class="MultichoiceIdevice" id="id124">
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="libot_drag.js"></script>
+<div class="iDevice emphasis1">
+<img alt="Icono de IDevice de pregunta"      class="iDevice_icon" src="icon_question.gif" />
+<span class="iDeviceTitle">Pregunta de Elección Múltiple</span><br/>
+<div class="iDevice_inner">
+<div id="taquestion124_2" class="block" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Un ejercicio interesante para demostrar que la inspección final no es la panacea. Suponga el alumno que se dispone de un proceso de inspección tal que:</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">a) da como buenas el 99% de las unidades buenas (rechaza equivocadamente el 1% de las buenas)<br />
+</font> 
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">b) da como malas el 95% de las malas (acepta equivocadamente el 5% de las malas)</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Ahora, y mediante simple aritmética aplique este proceso de inspecció a dos procesos</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Proceso 1: 95% de piezas buenas</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Proceso 2: 99,99% de piezas buenas</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3"> </font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">¿Qué pasa con la inspección en los dos casos? </font>
+</p>
+</div> &nbsp;&nbsp;
+<span  style="background-image:url('panel-amusements.png');">
+<a onmousedown="javascript:updateCoords(event);showMe('hint124_2', 350, 100);" style="cursor:help;align:center;vertical-align:middle;" title="Hint" 
+onmouseover="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;</a></span><div id="hint124_2" style="display:none; z-index:99;"><div style="float:right;" ><img alt="Cerrar" src="stock-stop.png" title="Cerrar" onmousedown="javascript:hideMe();"/></div><div class="popupDivLabel">Sugerencia</div>
+<div id="tahint124_2" class="block" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">Para cada proceso construya un árbol de dos ramas, calculando el % total de decisiones correctas (rechazar una pieza mala y aceptar una buena)</font><br />
+</div>
+</div></div>
+<table>
+<tbody>
+<tr><td><input type="radio" name="option124_2" id="i124_5" onclick="getFeedback(0,3,'124_2','multi')"/></td><td>
+<div id="taans124_5" class="block" style="display:block"><font face="verdana,geneva" size="3">Da igual.</font>
+</div></td></tr>
+<tr><td><input type="radio" name="option124_2" id="i124_42" onclick="getFeedback(1,3,'124_2','multi')"/></td><td>
+<div id="taans124_42" class="block" style="display:block"><div align="justify">
+<font face="verdana,geneva" size="3">La inspección es útil para el proceso de peor calidad, o mejor dicho, para cuando la calidad de proceso es menor o igual a la calidad de la inspección.</font><br />
+</div>
+</div></td></tr>
+<tr><td><input type="radio" name="option124_2" id="i124_45" onclick="getFeedback(2,3,'124_2','multi')"/></td><td>
+<div id="taans124_45" class="block" style="display:block"><font face="verdana,geneva" size="3">La inspección es útil para el
+proceso de mejor calidad, o mejor dicho, para cuando la calidad de
+proceso es mayor igual a la calidad de la inspección.</font>
+</div></td></tr>
+</tbody>
+</table>
+<div id="sa0b124_2" style="color: rgb(0, 51, 204);display: none;"><div id="taf124_5" class="block" style="display:block"><font face="verdana,geneva" size="3">¡Revise sus cálculos!</font>
+</div></div>
+<div id="sa1b124_2" style="color: rgb(0, 51, 204);display: none;"><div id="taf124_42" class="block" style="display:block"><font face="verdana,geneva" size="3">OK</font>
+</div></div>
+<div id="sa2b124_2" style="color: rgb(0, 51, 204);display: none;"><div id="taf124_45" class="block" style="display:block"><font face="verdana,geneva" size="3">¡Revise sus cálculos!</font>
+</div></div>
+<br/></div>
+</div>
+</div>
+<div class="ReflectionIdevice" id="id125">
+<div class="iDevice emphasis1">
+<img alt="Icono de iDevice" class="iDevice_icon"  src="icon_reflection.gif"/>
+<span class="iDeviceTitle">Reflexión Final</span>
+<script type="text/javascript" src="common.js"></script>
+<div class="iDevice_inner">
+<div id="ta125_8" class="block" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">Préstese especial atención a la transparencia nº 2 del material de clase; aquí se resume lo esencial del tema de control de procesos.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">Razone el alumno cómo es el flujo de control indicado y como lo sería en un sistema de producción, digamos, antiguo. ¿Diferencias?<br />
+</font>
+</p>
+</div><div id="view125" style="display:block;"><input type="button" name="btnshow125" value="Click aquí" class="feedbackbutton" onclick="showAnswer('125',1)"/>
+</div>
+<div id="hide125" style="display:none;"><input type="button" name="btnshow125" value="Ocultar" class="feedbackbutton" onclick="showAnswer('125',0)"/>
+</div>
+<div id="s125" class="feedback" style=" display: none;"><div id="ta125_9" class="block" style="display:block"><p align="justify">
+<font face="verdana,geneva" size="3">La diferencia es el sentido del control; en los sistemas antiguos primero se fabricaba y luego -mediante</font><font face="verdana,geneva" size="3"> la inspección de las variables de salida </font><font face="verdana,geneva" size="3">-  se comprobaba la bondad de lo fabricado.</font>
+</p>
+<p align="justify">
+<font face="verdana,geneva" size="3">En los nuevos sistemas se asegura la bondad del producto final a través del control de las variables de entrada al proceso. La inspección final se hace, en términos prácticos, inútil. </font>
+</p>
+</div></div>
+</div>
+</div>
+</div>
+<div class="noprt" align="right"><a href="14_doe_2_parte.html">&laquo; Anterior</a></div>
+</div>
+</div>
+</body></html>

@@ -10,9 +10,7 @@ Uso:
 
 import argparse
 import glob
-import html
 import os
-import re
 import shutil
 import sys
 import tempfile
@@ -26,7 +24,7 @@ warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# CSS nuclear responsive con menú colapsable en móvil y caja limpia para iDevices
+# CSS Responsive con forzado estricto de colapso en menú móvil
 RESPONSIVE_CSS = """
 /* ANULACIÓN FORZOSA DE POSICIONAMIENTOS ABSOLUTOS Y SOLAPAMIENTOS DE EXELEARNING */
 html, body, #nodeDecoration, #header, #emptyHeader, #siteFooter, #footer,
@@ -89,10 +87,10 @@ html, body {
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
-    border-bottom: 2px solid #84a929 !important; /* Línea verde de acento */
+    border-bottom: 2px solid #84a929 !important;
 }
 
-/* CONTENIDO INTERNO DE LAS CAJAS - ELIMINA FONDO GRIS */
+/* CONTENIDO INTERNO DE LAS CAJAS */
 .iDevice_inner, .iDevice_content, .iDevice_wrapper .block, div[class*="content"] {
     background: #ffffff !important;
     background-color: #ffffff !important;
@@ -108,12 +106,12 @@ html, body {
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    padding: 12px !important;
+    padding: 10px !important;
     margin-bottom: 15px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Botón desplegable solo visible en móvil */
+/* Botón desplegable */
 .mobile-menu-toggle {
     display: flex !important;
     align-items: center !important;
@@ -122,12 +120,13 @@ html, body {
     background: #84a929 !important;
     color: #ffffff !important;
     border: none !important;
-    padding: 10px 15px !important;
+    padding: 12px 15px !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
     border-radius: 6px !important;
     cursor: pointer !important;
     text-align: left !important;
+    box-sizing: border-box !important;
 }
 
 .mobile-menu-toggle::after {
@@ -140,17 +139,21 @@ html, body {
     transform: rotate(180deg) !important;
 }
 
-/* En móvil el menú por defecto está replegado/oculto */
+/* Ocultamiento estricto en móvil (< 850px) */
 @media (max-width: 849px) {
-    #siteNav ul, #nav ul {
-        display: none !important; /* Oculto inicialmente en móvil */
+    /* Ocultar cualquier ul, ol o nav interno en móvil por defecto */
+    #siteNav ul, #siteNav ol, #nav ul, #nav ol, #navcontainer ul {
+        display: none !important;
         list-style: none !important;
         padding: 10px 0 0 0 !important;
         margin: 0 !important;
     }
 
-    #siteNav ul.show-menu, #nav ul.show-menu {
-        display: block !important; /* Se muestra al hacer clic */
+    /* Mostrar solo cuando tenga la clase .menu-expanded */
+    #siteNav ul.menu-expanded, #siteNav ol.menu-expanded,
+    #nav ul.menu-expanded, #nav ol.menu-expanded,
+    #navcontainer ul.menu-expanded {
+        display: block !important;
     }
 }
 
@@ -181,7 +184,7 @@ html, body {
     padding: 0 !important;
 }
 
-/* MEDIA QUERY PARA ESCRITORIO (850px o más) */
+/* ESCRITORIO (850px o más) */
 @media (min-width: 850px) {
     #content, #wrapper, #container {
         flex-direction: row !important;
@@ -189,7 +192,7 @@ html, body {
     }
 
     .mobile-menu-toggle {
-        display: none !important; /* Ocultar botón en PC */
+        display: none !important;
     }
 
     #siteNav, #nav, #navcontainer {
@@ -202,15 +205,14 @@ html, body {
         margin-bottom: 0 !important;
     }
 
-    #siteNav ul, #nav ul {
-        display: block !important; /* Siempre visible en PC */
+    #siteNav ul, #siteNav ol, #nav ul, #nav ol, #navcontainer ul {
+        display: block !important;
         list-style: none !important;
         padding: 0 !important;
         margin: 0 !important;
     }
 }
 
-/* IMÁGENES Y TABLAS FLUIDAS */
 img, picture, svg, video, iframe {
     max-width: 100% !important;
     height: auto !important;
@@ -223,30 +225,35 @@ table {
 }
 """
 
-# JavaScript ligero e inyectado para controlar el toggle del menú en móvil
+# JS robusto para alternar el menú desplegable en móvil
 TOGGLE_JS = """
 document.addEventListener("DOMContentLoaded", function() {
-    var navContainer = document.querySelector("#siteNav, #nav, #navcontainer");
-    if (navContainer) {
-        var menuUl = navContainer.querySelector("ul");
-        if (menuUl) {
-            var btn = document.createElement("button");
-            btn.className = "mobile-menu-toggle";
-            btn.type = "button";
-            btn.innerHTML = "<span>☰ Índice del Módulo</span>";
+    var nav = document.querySelector("#siteNav, #nav, #navcontainer");
+    if (!nav) return;
 
-            btn.addEventListener("click", function() {
-                btn.classList.toggle("active");
-                menuUl.classList.toggle("show-menu");
-            });
+    // Buscar lista dentro del menú
+    var list = nav.querySelector("ul, ol");
+    if (!list) return;
 
-            navContainer.insertBefore(btn, navContainer.firstChild);
-        }
+    // Crear botón si no existe
+    if (!nav.querySelector(".mobile-menu-toggle")) {
+        var btn = document.createElement("button");
+        btn.className = "mobile-menu-toggle";
+        btn.type = "button";
+        btn.innerHTML = "<span>☰ Índice del Módulo</span>";
+
+        btn.addEventListener("click", function(e) {
+            e.preventDefault();
+            btn.classList.toggle("active");
+            list.classList.toggle("menu-expanded");
+        });
+
+        nav.insertBefore(btn, nav.firstChild);
     }
 });
 """
 
-IMG_INFO = {}  # nombre original (lower) -> (slug, w, h)
+IMG_INFO = {}
 
 
 def crop_white(im, thr=245):
@@ -294,12 +301,12 @@ def process_html_file(file_path, out_dir):
         viewport = soup.new_tag("meta", attrs={"name": "viewport", "content": "width=device-width, initial-scale=1.0"})
         head.append(viewport)
 
-    # 2. Insertar estilos CSS AL FINAL de <head>
+    # 2. Insertar estilos CSS
     style_tag = soup.new_tag("style", type="text/css")
     style_tag.string = RESPONSIVE_CSS
     head.append(style_tag)
 
-    # 3. Insertar script JS para desplegar el menú en móvil
+    # 3. Insertar script JS
     script_tag = soup.new_tag("script", type="text/javascript")
     script_tag.string = TOGGLE_JS
     if soup.body:
@@ -352,7 +359,7 @@ def main():
     out = args.out
     os.makedirs(out, exist_ok=True)
 
-    # Copiar recursos originales
+    # Copiar recursos
     for item in os.listdir(src):
         s = os.path.join(src, item)
         d = os.path.join(out, item)

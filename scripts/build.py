@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
 """
 Convierte el export eXeLearning "Guia_Calidad_Seis_Sigma" en una web responsive.
-Mantiene el HTML y diseño original, forzando la anulación de los estilos rígidos de eXe.
+Mantiene el HTML y diseño original, arreglando la superposición de cajas y agregando
+un menú colapsable (acordeón/dropdown) en móvil para evitar que ocupe demasiado espacio.
 
 Uso:
     python3 scripts/build.py RUTA_AL_ZIP_O_CARPETA [--out public]
 """
 
-import argparse, glob, html, os, re, shutil, sys, tempfile, zipfile, warnings
+import argparse
+import glob
+import html
+import os
+import re
+import shutil
+import sys
+import tempfile
+import warnings
+import zipfile
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from PIL import Image
 import numpy as np
@@ -16,7 +26,7 @@ warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# CSS nuclear con alta especificidad para anular los CSS nativos de eXeLearning
+# CSS nuclear responsive con menú colapsable en móvil y caja limpia para iDevices
 RESPONSIVE_CSS = """
 /* ANULACIÓN FORZOSA DE POSICIONAMIENTOS ABSOLUTOS Y SOLAPAMIENTOS DE EXELEARNING */
 html, body, #nodeDecoration, #header, #emptyHeader, #siteFooter, #footer,
@@ -42,6 +52,7 @@ html, body {
     padding: 0 !important;
     overflow-x: hidden !important;
     background-color: #f5f7f9 !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
 }
 
 /* CONTENEDOR PRINCIPAL FLEXIBLE */
@@ -50,14 +61,14 @@ html, body {
     flex-direction: column !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-    padding: 20px !important;
-    gap: 25px !important;
+    padding: 15px !important;
+    gap: 20px !important;
 }
 
 /* LIMPIEZA Y ESTILIZADO DE LAS CAJAS DE CONTENIDO (IDEVICES) */
 .iDevice, div[class*="iDevice"], .iDevice_wrapper, article.iDevice {
-    margin-top: 25px !important;
-    margin-bottom: 25px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
     padding: 20px !important;
     background-color: #ffffff !important;
     background-image: none !important;
@@ -78,7 +89,7 @@ html, body {
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
-    border-bottom: 2px solid #84a929 !important; /* Línea verde limpia de acento */
+    border-bottom: 2px solid #84a929 !important; /* Línea verde de acento */
 }
 
 /* CONTENIDO INTERNO DE LAS CAJAS - ELIMINA FONDO GRIS */
@@ -90,22 +101,57 @@ html, body {
     margin: 0 !important;
 }
 
-/* MENÚ LATERAL / NAVEGACIÓN */
+/* --- ESTILOS DE NAVEGACIÓN (MENÚ) --- */
 #siteNav, #nav, #navcontainer {
     display: block !important;
     width: 100% !important;
     background: #ffffff !important;
     border: 1px solid #e2e8f0 !important;
     border-radius: 8px !important;
-    padding: 15px !important;
-    margin-bottom: 20px !important;
+    padding: 12px !important;
+    margin-bottom: 15px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
-#siteNav ul, #nav ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+/* Botón desplegable solo visible en móvil */
+.mobile-menu-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    background: #84a929 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 10px 15px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    text-align: left !important;
+}
+
+.mobile-menu-toggle::after {
+    content: "▼" !important;
+    font-size: 0.8rem !important;
+    transition: transform 0.2s ease !important;
+}
+
+.mobile-menu-toggle.active::after {
+    transform: rotate(180deg) !important;
+}
+
+/* En móvil el menú por defecto está replegado/oculto */
+@media (max-width: 849px) {
+    #siteNav ul, #nav ul {
+        display: none !important; /* Oculto inicialmente en móvil */
+        list-style: none !important;
+        padding: 10px 0 0 0 !important;
+        margin: 0 !important;
+    }
+
+    #siteNav ul.show-menu, #nav ul.show-menu {
+        display: block !important; /* Se muestra al hacer clic */
+    }
 }
 
 #siteNav li, #nav li {
@@ -119,10 +165,12 @@ html, body {
     color: #333333 !important;
     border-radius: 4px !important;
     word-break: break-word !important;
+    font-size: 0.95rem !important;
 }
 
 #siteNav a:hover, #nav a:hover {
     background-color: #f1f5f9 !important;
+    color: #84a929 !important;
 }
 
 /* ÁREA DE CONTENIDO PRINCIPAL */
@@ -133,11 +181,15 @@ html, body {
     padding: 0 !important;
 }
 
-/* MEDIA QUERY PARA ESCRITORIO */
+/* MEDIA QUERY PARA ESCRITORIO (850px o más) */
 @media (min-width: 850px) {
     #content, #wrapper, #container {
         flex-direction: row !important;
         align-items: flex-start !important;
+    }
+
+    .mobile-menu-toggle {
+        display: none !important; /* Ocultar botón en PC */
     }
 
     #siteNav, #nav, #navcontainer {
@@ -148,6 +200,13 @@ html, body {
         max-height: calc(100vh - 40px) !important;
         overflow-y: auto !important;
         margin-bottom: 0 !important;
+    }
+
+    #siteNav ul, #nav ul {
+        display: block !important; /* Siempre visible en PC */
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }
 
@@ -162,6 +221,29 @@ table {
     overflow-x: auto !important;
     max-width: 100% !important;
 }
+"""
+
+# JavaScript ligero e inyectado para controlar el toggle del menú en móvil
+TOGGLE_JS = """
+document.addEventListener("DOMContentLoaded", function() {
+    var navContainer = document.querySelector("#siteNav, #nav, #navcontainer");
+    if (navContainer) {
+        var menuUl = navContainer.querySelector("ul");
+        if (menuUl) {
+            var btn = document.createElement("button");
+            btn.className = "mobile-menu-toggle";
+            btn.type = "button";
+            btn.innerHTML = "<span>☰ Índice del Módulo</span>";
+
+            btn.addEventListener("click", function() {
+                btn.classList.toggle("active");
+                menuUl.classList.toggle("show-menu");
+            });
+
+            navContainer.insertBefore(btn, navContainer.firstChild);
+        }
+    }
+});
 """
 
 IMG_INFO = {}  # nombre original (lower) -> (slug, w, h)
@@ -212,12 +294,20 @@ def process_html_file(file_path, out_dir):
         viewport = soup.new_tag("meta", attrs={"name": "viewport", "content": "width=device-width, initial-scale=1.0"})
         head.append(viewport)
 
-    # 2. Insertar estilos AL FINAL de <head> para sobreescribir cualquier css de eXe
+    # 2. Insertar estilos CSS AL FINAL de <head>
     style_tag = soup.new_tag("style", type="text/css")
     style_tag.string = RESPONSIVE_CSS
-    head.append(style_tag)  # append al final del head asegura prioridad sobre los <link rel="stylesheet">
+    head.append(style_tag)
 
-    # 3. Sustituir imágenes
+    # 3. Insertar script JS para desplegar el menú en móvil
+    script_tag = soup.new_tag("script", type="text/javascript")
+    script_tag.string = TOGGLE_JS
+    if soup.body:
+        soup.body.append(script_tag)
+    else:
+        head.append(script_tag)
+
+    # 4. Sustituir imágenes por responsive (<picture>)
     for img in soup.find_all("img"):
         src = (img.get("src") or "").strip()
         key = os.path.basename(src).lower()

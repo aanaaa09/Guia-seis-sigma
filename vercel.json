@@ -1,4 +1,6 @@
 {
+  "buildCommand": "python scripts/build.py \"Guia Calidad Seis Sigma\"",
+  "installCommand": "pip install -r requirements.txt",
   "cleanUrls": true,
   "trailingSlash": false,
   "outputDirectory": "public",

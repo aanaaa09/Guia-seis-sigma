@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>R &amp; R · Calidad: Seis Sigma</title>
+<meta name="description" content="Guía de estudio de la metodología Seis Sigma: estadística, Minitab, capacidad de proceso, ANOVA, DoE y control.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'';</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <button class="topbar__btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="topbar__brand" href="/">Seis <b>Sigma</b></a>
+  <button class="topbar__btn" id="themeBtn" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Índice de la guía">
+  <a class="sidebar__brand" href="/"><span class="sidebar__logo">σ</span><span>Calidad<br><b>Seis Sigma</b></span></a>
+  <nav class="nav">
+<a class="nav__home" href="/">Inicio</a>
+<a class="nav__item" href="/00-como-utilizar-esta-guia"><span class="nav__num">0</span><span>¿Cómo utilizar esta Guía?</span></a>
+<a class="nav__item" href="/01-introduccion"><span class="nav__num">1</span><span>Introducción</span></a>
+<a class="nav__item" href="/02-diagrama-de-procesos"><span class="nav__num">2</span><span>Diagrama de procesos</span></a>
+<a class="nav__item" href="/03-minitab"><span class="nav__num">3</span><span>Minitab</span></a>
+<a class="nav__item is-active" aria-current="page" href="/04-r-and-r"><span class="nav__num">4</span><span>R &amp; R</span></a>
+<a class="nav__item" href="/05-probabilidad"><span class="nav__num">5</span><span>Probabilidad</span></a>
+<a class="nav__item" href="/06-estadistica-basica"><span class="nav__num">6</span><span>Estadística básica</span></a>
+<a class="nav__item" href="/07-capacidad-de-proceso"><span class="nav__num">7</span><span>Capacidad de proceso</span></a>
+<a class="nav__item" href="/08-intervalos-de-confianza"><span class="nav__num">8</span><span>Intervalos de confianza</span></a>
+<a class="nav__item" href="/09-contraste-de-hipotesis"><span class="nav__num">9</span><span>Contraste de hipótesis</span></a>
+<a class="nav__item" href="/10-analisis-grafico"><span class="nav__num">10</span><span>Análisis gráfico</span></a>
+<a class="nav__item" href="/11-regresion"><span class="nav__num">11</span><span>Regresión</span></a>
+<a class="nav__item" href="/12-anova"><span class="nav__num">12</span><span>ANOVA</span></a>
+<a class="nav__item" href="/13-doe-1-parte"><span class="nav__num">13</span><span>DoE · 1ª parte</span></a>
+<a class="nav__item" href="/14-doe-2-parte"><span class="nav__num">14</span><span>DoE · 2ª parte</span></a>
+<a class="nav__item" href="/15-control"><span class="nav__num">15</span><span>Control</span></a>
+  </nav>
+</aside>
+<main class="main" id="contenido">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <article class="article">
+    <p class="kicker">Capítulo 4</p>
+    <h1 class="page-title">R &amp; R</h1>
+    <section class="lead prose"><p>
+En este capítulo vamos a tratar la importantísima cuestión de los sistemas de medida. Siendo Seis Sigma una metodología basada en el análisis avanzado de datos, el asegurar la bondad de éstos es absolutamente crítico para todo el desarrollo del proyecto de mejora.
+</p>
+<p>
+Podríamos atrevernos a decir que este es, junto con el Diseño de Experimentos, el capítulo más importante de la asignatura y de la propia metodología. 
+</p></section><section class="card card--objectives "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h2 class="card__title">Objetivos</h2></header><div class="card__body prose"><p>
+Los objetivos de este módulo son los siguientes:
+</p>
+<p>
+a) comprender la importancia de la validación de los sistemas de medida en cualquier análisis científico de datos.
+</p>
+<p>
+b) asimilar los conceptos básicos del proceso de validación.
+</p>
+<p>
+c) utilización de Minitab para la validación de datos de tipo continuo. 
+</p></div></section><section class="card card--preknowledge "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h2 class="card__title">Pre-conocimiento</h2></header><div class="card__body prose"><div>
+Un mínimo conocimiento sobre el significado y la utilidad de la desviación típica (o la varianza) para describir la variabilidad de un conjunto de datos es necesario.<br/>
+</div></div></section><section class="card card--reading "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h7"/></svg></span><h2 class="card__title">Actividad de Lectura</h2></header><div class="card__body prose"><p>
+La información para este módulo
+
+aparece en el archivo "4.pdf". El alumno irá leyendo el material en los bloques de transparencias que se indican a continuación:
+</p>
+
+<p>
+Bloque 1) -transparencias nº 1 a la nº 19 -
+</p>
+<div>
+<blockquote>
+<p>
+Esta es la parte donde se describen los conceptos básicos del tema, que podrían resumirse cualitativamente en la nº 7 y cuantitativamente en la nº 8. La variación total observada de un proceso se puede descomponer en una serie de partes, cada una de las cuales está asociada a un factor responsable de la variación (p. ej. el operario, el equipo, etc)
+</p>
+</blockquote>
+</div>
+<p>
+Bloque 2) -transparencias nº 20 a la nº 24 -
+</p>
+<div>
+<blockquote>
+<p>
+Las tres primeras son una muy buena guía sobre cómo preparar un plan de recogida de muestras para validar un sistema de medida; las dos segundas nos muestran cómo Minitab nos ayuda a preparar la tabla y dejar todo listo para recoger los valores (columna C5 "Response" de la nº 24) <br/>
+
+</p>
+</blockquote>
+</div>
+<p>
+Bloque 3) -transparencias nº 25 a la nº 34 -
+</p>
+<div>
+<blockquote>
+<p>
+Este es un ejemplo completo de las salidas de Minitab para un análisis R&amp;R. El alumno debe repetir el caso y prestar especial atención a la nº  27 (resultados gráficos) y a las nº 33 y 34 (resultados numéricos) <br/>
+
+</p>
+</blockquote>
+</div>
+<p>
+Bloque 4) -transparencias nº 35 a la nº 41 - 
+</p>
+<div>
+<blockquote>
+<p>
+Otro ejemplo a repetir por el alumno. 
+</p>
+</blockquote>
+</div><input class="feedbackbutton" name="btn44_24_6" type="button" value="Click aquí"/></div></section><section class="card card--casestudy "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span><h2 class="card__title">Caso de estudio</h2></header><div class="card__body prose"><div>
+Ahora vamos a aplicar  la teoría a nuestro helicóptero. Para ello vamos a trabajar con tres prototipos diferentes, según lo que indicamos  a continuación:
+</div>
+
+
+<table>
+<tbody>
+<tr>
+<td> <u>Prototipo nº 1</u></td>
+<td> <u>Prototipo nº 2</u></td>
+<td> <u>Prototipo nº 3</u></td>
+</tr>
+<tr>
+<td>
+<blockquote>
+<p>
+Clip: si
+</p>
+<p>
+Celo en el ala: si
+</p>
+<p>
+Celo en el cuerpo: si
+</p>
+<p>
+Largo ala: 8
+</p>
+<p>
+Largo cuerpo: 8
+</p>
+</blockquote>
+<blockquote>
+Ancho cuerpo: 5
+</blockquote>
+</td>
+<td>
+<blockquote>
+<p>
+Clip: si
+</p>
+<p>
+Celo en el ala: si
+</p>
+<p>
+Celo en el cuerpo: si
+</p>
+<p>
+Largo ala: 6,5
+</p>
+<p>
+Largo cuerpo: 8
+</p>
+</blockquote>
+<blockquote>
+Ancho cuerpo: 5
+</blockquote>
+</td>
+<td>
+<p>
+Clip: no
+</p>
+<p>
+Celo en el ala: si
+</p>
+<p>
+Celo en el cuerpo: si
+</p>
+<p>
+Largo ala: 9,5
+</p>
+<p>
+Largo cuerpo: 6,5
+</p>
+Ancho cuerpo: 5</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Para cada uno de estos prototipos habrá que obtener el tiempo de vuelo tres veces por cada operario (OpA, OpB y OpC), y deberemos construir una tabla de Minitab como la siguiente:
+</p>
+
+<figure class="captura"><picture><source srcset="/img/pantalla-minitab-r-and-r.webp" type="image/webp"/><img alt="" decoding="async" height="668" loading="lazy" src="/img/pantalla-minitab-r-and-r.jpg" width="658"/></picture></figure>
+
+<p>
+La columna de los tiempos es la que recogerá las medidas realizadas. 
+</p><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><p>
+El R&amp;R solo tendrá éxito cuando:
+</p>
+<p>
+a) la contribución del sistema de medida a la variabilidad total observada sea inferior al 10% 
+</p>
+<p>
+b) el número de categorías sea superior a 4.
+</p>
+
+
+
+
+</div></div></details></div></section><section class="card card--question "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span><h2 class="card__title">Pon a prueba lo aprendido</h2></header><div class="card__body prose"><div class="quiz" data-quiz="1"><div class="quiz__q prose"><div>
+Antes de comenzar a emplear las medidas, tanto históricas de las que pueda disponerse como las que se recojan específicamente para el análisis de un conjunto de datos, debemos siempre asegurarnos que la contribución R&amp;R del sistema de medida en relación a la variabilidad total observada en las mediciones debería ser &lt; 10% (y nunca superior al 30%) puesto que:
+</div></div><details class="reveal"><summary>Ver sugerencia</summary><div class="prose"><div><div>
+Recuerda el viejo lema de la informática: "si al ordenador le metes basura, él te devolverá basura" y pregúntate: ¿aceptaremos mezclar basura con verdadera información?<br/>
+</div>
+</div></div></details><div class="quiz__opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="0" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+Aunque es recomendable comprobar esto, en la práctica se puede empezar a trabajar con los datos de que se disponga; más adelante se comprobará la bondad del sistema de medida.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-0"><div class="prose"><div><div>
+NUNCA se debe trabajar con datos provenientes de sistemas de medida no validados. Seis Sigma es un sistema de procesado lógico de información que producirá conclusiones científicas a partir de ésta. Si la información está contaminada los resultados también lo estarán.<br/>
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="1" data-state="ok"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+No hay que hacer absolutamente nada con datos no validados; sin haber pasado el análisis R&amp;R un conjunto de datos no significa absolutamente nada.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--ok" hidden data-for="q1-1"><div class="prose"><div><div>
+¡OK!, has entendido el mensaje principal del módulo.<br/>
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="2" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+Los datos históricos hay que utilizarlos tal como están, pues sino los perderíamos; los datos que se recojan en el contexto del proyecto de mejora deberán, en cambio, ser validados.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-2"><div class="prose"><div><p>
+ERROR grave y, lamentablemente, bastante frecuente. El conjunto de datos que sirven para mejorar un proceso debe formar un conjunto homegéneo asociado a sistemas de medida equivalentes (igual de buenos, coloquialmente hablando).
+</p>
+<p>
+De hecho, es a través del análisis R&amp;R, como muchas veces el equipo de trabajo llega a la conclusión que el histórico de datos no le vale para nada y que todo el trabajo de análisis ha de hacerse con nuevos datos correctamente tomados.
+</p>
+</div></div></div></div></div></div></section><section class="card card--reflection "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span><h2 class="card__title">Reflexión Final</h2></header><div class="card__body prose"><p>
+Como comentamos al inicio del módulo, el R&amp;R es uno de los aspectos cruciales de cualquier proyecto de mejora y, en general, de cualquier análisis científico de datos. La comprensión de estos conceptos justifica -por sí misma- la realización de un curso sobre Seis Sigma.
+</p>
+<p>
+El método de cálculo típico, p. ej. el que realiza Minitab, no solo nos dice si el sistema de medida es o no válido sino que en este último caso nos indica qué aspectos son los que tenemos que corregir. ¿Ves esto último?
+</p><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><p>
+Es más fácil de lo que parece; lo que hace el método es descomponer la variabilidad total observada en una serie de componentes. ¿Recuerdas la salida de Minitab, en la ventana de sesión?
+</p>
+
+<figure class="captura"><picture><source srcset="/img/contribuciones-r-and-r.webp" type="image/webp"/><img alt="" decoding="async" height="456" loading="lazy" src="/img/contribuciones-r-and-r.jpg" width="696"/></picture></figure>
+
+<p>
+Con esta información no es difícil descubrir si la variabilidad del sistema de medida viene dada por:
+</p>
+<p>
+a) los operarios (habría que entrenarlos mejor)
+</p>
+<p>
+b) la interacción operario-pieza (no todos los operarios podrían medir cualquier tipo de pieza, p. ej. algunos podrían solo medir las piezas grandes y otros solo las pequeñas)
+</p>
+<p>
+c) el propio equipo -repetibility- (habría que cambiarlo por otro más sofisticado. 
+</p>
+</div></div></details></div></section>
+    <nav class="pager" aria-label="Paginación de capítulos"><a class="pager__a pager__a--prev" href="/03-minitab"><small>Anterior</small><strong>3. Minitab</strong></a><a class="pager__a pager__a--next" href="/05-probabilidad"><small>Siguiente</small><strong>5. Probabilidad</strong></a></nav>
+  </article>
+  <footer class="footer">
+    <span>Material docente original licenciado bajo <a href="/licencia">GNU FDL 1.2</a>. Versión web modernizada.</span>
+  </footer>
+</main>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diagrama de procesos · Calidad: Seis Sigma</title>
+<meta name="description" content="Guía de estudio de la metodología Seis Sigma: estadística, Minitab, capacidad de proceso, ANOVA, DoE y control.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'';</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <button class="topbar__btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="topbar__brand" href="/">Seis <b>Sigma</b></a>
+  <button class="topbar__btn" id="themeBtn" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Índice de la guía">
+  <a class="sidebar__brand" href="/"><span class="sidebar__logo">σ</span><span>Calidad<br><b>Seis Sigma</b></span></a>
+  <nav class="nav">
+<a class="nav__home" href="/">Inicio</a>
+<a class="nav__item" href="/00-como-utilizar-esta-guia"><span class="nav__num">0</span><span>¿Cómo utilizar esta Guía?</span></a>
+<a class="nav__item" href="/01-introduccion"><span class="nav__num">1</span><span>Introducción</span></a>
+<a class="nav__item is-active" aria-current="page" href="/02-diagrama-de-procesos"><span class="nav__num">2</span><span>Diagrama de procesos</span></a>
+<a class="nav__item" href="/03-minitab"><span class="nav__num">3</span><span>Minitab</span></a>
+<a class="nav__item" href="/04-r-and-r"><span class="nav__num">4</span><span>R &amp; R</span></a>
+<a class="nav__item" href="/05-probabilidad"><span class="nav__num">5</span><span>Probabilidad</span></a>
+<a class="nav__item" href="/06-estadistica-basica"><span class="nav__num">6</span><span>Estadística básica</span></a>
+<a class="nav__item" href="/07-capacidad-de-proceso"><span class="nav__num">7</span><span>Capacidad de proceso</span></a>
+<a class="nav__item" href="/08-intervalos-de-confianza"><span class="nav__num">8</span><span>Intervalos de confianza</span></a>
+<a class="nav__item" href="/09-contraste-de-hipotesis"><span class="nav__num">9</span><span>Contraste de hipótesis</span></a>
+<a class="nav__item" href="/10-analisis-grafico"><span class="nav__num">10</span><span>Análisis gráfico</span></a>
+<a class="nav__item" href="/11-regresion"><span class="nav__num">11</span><span>Regresión</span></a>
+<a class="nav__item" href="/12-anova"><span class="nav__num">12</span><span>ANOVA</span></a>
+<a class="nav__item" href="/13-doe-1-parte"><span class="nav__num">13</span><span>DoE · 1ª parte</span></a>
+<a class="nav__item" href="/14-doe-2-parte"><span class="nav__num">14</span><span>DoE · 2ª parte</span></a>
+<a class="nav__item" href="/15-control"><span class="nav__num">15</span><span>Control</span></a>
+  </nav>
+</aside>
+<main class="main" id="contenido">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <article class="article">
+    <p class="kicker">Capítulo 2</p>
+    <h1 class="page-title">Diagrama de procesos</h1>
+    <section class="lead prose"><p>
+En este capítulo vamos a realizar una representación gráfica del proceso, la primera aproximación hacia el conocimiento del mismo. Observar al proceso real en funcionamiento y traducir esa realidad a un diagrama es el primer paso para comprender al proceso.
+</p>
+<p>
+<br/>
+Un concepto muy importante es que Seis Sigma consigue la mejora a través del conocimiento del proceso. 
+</p></section><section class="card card--objectives "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h2 class="card__title">Objetivos</h2></header><div class="card__body prose"><p>
+El objetivo del módulo es el de permitirnos construir diagramas de proceso según lo requerido para un proyecto de mejora Seis Sigma.
+</p>
+<p>
+No debemos confundir este tipo de diagramas a los que estamos haciendo referencia con simples flujogramas en que  aparecen descritas las tareas o actividades de un proceso: aquí les pediremos mucho más. <br/>
+
+</p></div></section><section class="card card--preknowledge "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h2 class="card__title">Pre-conocimiento</h2></header><div class="card__body prose"><p>
+Nos es necesario conocimiento previo alguno, la idea de construir representaciones gráficas de procesos o actividades es bastante intuitiva. 
+</p>
+<p>
+Lo único importante a tener en cuenta cuando representamos diagramas de este tipo es que debemos ser rigurosos, es decir: 
+</p>
+<p>
+a) representar todos los pasos sin omitir o dar por supuesto ninguno 
+</p>
+<p>
+b) representar los pasos en orden lógico 
+</p>
+<p>
+c) los pasos se encadenan unos con otros 
+</p>
+<p>
+d) no pueden surgir pasos "de la nada" 
+</p>
+<p>
+e) los pasos no acaban en "vías muertas", todo paso encamina con otro 
+</p>
+<p>
+f) solo hay un inicio y un final para un proceso
+</p></div></section><section class="card card--reading "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h7"/></svg></span><h2 class="card__title">Actividad de Lectura</h2></header><div class="card__body prose"><p>
+Ahora debemos leer el archivo "2.pdf". Lo más importante son dos cosas: 
+</p>
+<p>
+a) es básico establecer claramente los límites del proceso sobre el que se va a trabajar (no podemos extendernos hasta el infinito, ¡y es muy fácil caer en este error!) 
+</p>
+<p>
+b) poner especial atención a la transparencia nº 12. En ella se ve lo que debemos representar en un buen diagrama de procesos 
+</p>
+<blockquote>
+<p>
+b.1) las entradas (X's) y salidas (X's) globales del proceso 
+</p>
+<p>
+b.2) las entradas (x's) y salidas (y's) a cada paso del proceso 
+</p>
+<div>
+b.3) las variables de cada etapa del proceso se pueden clasificar -a priori- en una serie de categorías según lo que creamos influyen en la salida del proceso. Hablo de "creer" pues aún no hemos realizado el análisis científico de los datos.
+</div>
+</blockquote></div></section><section class="card card--casestudy "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span><h2 class="card__title">Caso de estudio</h2></header><div class="card__body prose"><p>
+Volvamos a nuestro helicóptero. Ya hemos ganado un poco de "feeling" sobre la sensibilidad del tiempo de vuelo a las diferentes variables.
+</p>
+<p>
+Además, aunque solo podremos jugar con las variables que aparecen en el simulador, el alumno puede emplear el sentido común para proponer variables adicionales que, hipotéticamente al menos, podrían condicionar el tiempo de vuelo. 
+</p>
+<p>
+Pues es el momento de representar gráficamente en un diagrama de proceso las diferentes etapas del proceso descritas en la documentación del caso. <br/>
+
+</p><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><div>
+Tengamos en cuenta dos cosas importantes:
+</div>
+
+<div>
+a) Las variables de diseño las introducimos en la etapa de "prueba de vuelo" pues es en los tiempos donde estas han de influir, ¿de acuerdo?
+</div>
+
+<div>
+b) las y's de salida de un paso constituyen algunas de las entradas al paso siguiente; el resto de esas entradas serán las x's de aquel paso, ¿ok? 
+</div>
+</div></div></details></div></section><section class="card card--question "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span><h2 class="card__title">Pon a prueba lo aprendido</h2></header><div class="card__body prose"><div class="quiz" data-quiz="1"><div class="quiz__q prose"><div>
+Normalmente los procesos de las empresas estás puestos por escrito en procedimientos de trabajo, ¿crees que valdría ese documento como diagrama de proceso para trabajar en un proyecto de mejora en que que vamos a recoger datos y trabajar con ellos desde el punto de vista estadístico?<br/>
+</div></div><details class="reveal"><summary>Ver sugerencia</summary><div class="prose"><div><div>
+Piensa lo siguiente: los datos que vamos a recoger ¿son generados por lo que "es" o por lo que "debería ser" el proceso?<br/>
+</div>
+</div></div></details><div class="quiz__opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="0" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+Sí, en las buenas empresas las cosas se hacen siempre tal y como recogen los procedimientos.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-0"><div class="prose"><div><div>
+¡No lo creas! hasta en las mejores empresas hay frecuentes desviaciones de procedimientos.<br/>
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="1" data-state="info"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+Sí, hay que partir de la base de lo que está escrito y ajustarlo según la realidad.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--info" hidden data-for="q1-1"><div class="prose"><div><div>
+Aunque conceptualmente no podríamos calificar esta opción como "mala", sí lo es desde un punto de vista práctico pues normalmente es tanto lo que hay que retocar que no compensa el esfuerzo.
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="2" data-state="ok"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+No, lo práctico es "bajar hasta el proceso", afilar el lápiz y ver, preguntar y escuchar a los que hacen la realidad del día a día del proceso.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--ok" hidden data-for="q1-2"><div class="prose"><div><div>
+Correcto, la realidad del proceso es el origen verdadero  e incuestionable de las mediciones futuras que realizaremos del proceso. <br/>
+</div>
+</div></div></div></div></div></div></section><section class="card card--reflection "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span><h2 class="card__title">Reflexión Final del Módulo</h2></header><div class="card__body prose"><div>
+¿Por qué crees que una herramienta tan simple como el Diagrama de Proceso nos ayuda tanto a profundizar en el conocimiento del proceso? No parece algo muy "científico" realizar un burdo esquema de un proceso simplemente mirando cómo funciona la realidad y a partir de la experiencia de los encargados, y esperar sacar información jugosa ¿o sí?   <br/>
+</div><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><div>
+Una radiografía de un miembro fracturado es también algo no demasiado preciso, solo sale un plano de visión de algo tridimensional y hace falta mucha experiencia para poder siquiera identificar la rotura. Pero en manos de un buen médico es pieza valiosísima y -algo importante- barata a partir de la cual se puede tomar decisiones y avanzar en el diagnóstico.<br/>
+</div>
+</div></div></details></div></section>
+    <nav class="pager" aria-label="Paginación de capítulos"><a class="pager__a pager__a--prev" href="/01-introduccion"><small>Anterior</small><strong>1. Introducción</strong></a><a class="pager__a pager__a--next" href="/03-minitab"><small>Siguiente</small><strong>3. Minitab</strong></a></nav>
+  </article>
+  <footer class="footer">
+    <span>Material docente original licenciado bajo <a href="/licencia">GNU FDL 1.2</a>. Versión web modernizada.</span>
+  </footer>
+</main>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

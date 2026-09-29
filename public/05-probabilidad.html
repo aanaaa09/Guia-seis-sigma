@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Probabilidad · Calidad: Seis Sigma</title>
+<meta name="description" content="Guía de estudio de la metodología Seis Sigma: estadística, Minitab, capacidad de proceso, ANOVA, DoE y control.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'';</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <button class="topbar__btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="topbar__brand" href="/">Seis <b>Sigma</b></a>
+  <button class="topbar__btn" id="themeBtn" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Índice de la guía">
+  <a class="sidebar__brand" href="/"><span class="sidebar__logo">σ</span><span>Calidad<br><b>Seis Sigma</b></span></a>
+  <nav class="nav">
+<a class="nav__home" href="/">Inicio</a>
+<a class="nav__item" href="/00-como-utilizar-esta-guia"><span class="nav__num">0</span><span>¿Cómo utilizar esta Guía?</span></a>
+<a class="nav__item" href="/01-introduccion"><span class="nav__num">1</span><span>Introducción</span></a>
+<a class="nav__item" href="/02-diagrama-de-procesos"><span class="nav__num">2</span><span>Diagrama de procesos</span></a>
+<a class="nav__item" href="/03-minitab"><span class="nav__num">3</span><span>Minitab</span></a>
+<a class="nav__item" href="/04-r-and-r"><span class="nav__num">4</span><span>R &amp; R</span></a>
+<a class="nav__item is-active" aria-current="page" href="/05-probabilidad"><span class="nav__num">5</span><span>Probabilidad</span></a>
+<a class="nav__item" href="/06-estadistica-basica"><span class="nav__num">6</span><span>Estadística básica</span></a>
+<a class="nav__item" href="/07-capacidad-de-proceso"><span class="nav__num">7</span><span>Capacidad de proceso</span></a>
+<a class="nav__item" href="/08-intervalos-de-confianza"><span class="nav__num">8</span><span>Intervalos de confianza</span></a>
+<a class="nav__item" href="/09-contraste-de-hipotesis"><span class="nav__num">9</span><span>Contraste de hipótesis</span></a>
+<a class="nav__item" href="/10-analisis-grafico"><span class="nav__num">10</span><span>Análisis gráfico</span></a>
+<a class="nav__item" href="/11-regresion"><span class="nav__num">11</span><span>Regresión</span></a>
+<a class="nav__item" href="/12-anova"><span class="nav__num">12</span><span>ANOVA</span></a>
+<a class="nav__item" href="/13-doe-1-parte"><span class="nav__num">13</span><span>DoE · 1ª parte</span></a>
+<a class="nav__item" href="/14-doe-2-parte"><span class="nav__num">14</span><span>DoE · 2ª parte</span></a>
+<a class="nav__item" href="/15-control"><span class="nav__num">15</span><span>Control</span></a>
+  </nav>
+</aside>
+<main class="main" id="contenido">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <article class="article">
+    <p class="kicker">Capítulo 5</p>
+    <h1 class="page-title">Probabilidad</h1>
+    <section class="lead prose"><div>
+En este módulo se busca dar un repaso general a los conceptos básicos de probabilidad, punto de partida para el estudio de la estadística en sí. La razón de ser de este módulo es conseguir que el estudiante de Seis Sigma se familiarice con el concepto básico inherente a cualquier proceso aleatorio: los resultados de los casos individuales no son predecibles, mientras que podemos hacer conjeturas razonables sobre el comportamiento de un gran número de casos provenientes de un mismo proceso estable. <br/>
+</div></section><section class="card card--objectives "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h2 class="card__title">Objetivos</h2></header><div class="card__body prose"><p>
+
+
+Los objetivos de este módulo son los siguientes:
+
+
+</p>
+
+<p>
+
+
+a) realizar simulaciones elementales de números aleatorios con Excel.
+
+
+</p>
+
+<p>
+
+
+b) conocimiento general de las siete reglas de la probabilidad.
+</p>
+<div>
+c) conocimiento eneral de probabilidad en serie, en paralelo y de árboles de decisión.
+</div></div></section><section class="card card--preknowledge "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h2 class="card__title">Pre-conocimiento</h2></header><div class="card__body prose"><div>
+Sería deseable, aunque no imprescindible, algún conocimiento previo sobre probabilidad y estadística.<br/>
+</div></div></section><section class="card card--reading "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h7"/></svg></span><h2 class="card__title">Actividad de Lectura</h2></header><div class="card__body prose"><p>
+
+
+El material de lectura es el archivo "5.pdf" del material de clase, que se encuentra claramente dividido en: 
+
+
+</p>
+
+<p>
+
+
+Bloque 1) general introductorio (transparencias 1 a 10) 
+
+
+</p>
+
+<p>
+
+
+Bloque 2) siete reglas de probabilidad  (transparencias 11 a 18)
+</p>
+<p>
+
+
+Bloque 3) aplicaciones de reglas de probabilidad  (transparencias 19 a 29)
+</p>
+<p>
+Nota: No se complique el alumno demasiado la vida con el método de la Tabla de Verdad (transparencias 26 a 29, para resolver el problema de la nº 25); la transparencia 30 resuelve lo mismo de forma mucho más intuitiva. 
+</p>
+<p>
+
+
+Bloque 4) árbol de decisión (transparencia 30) 
+</p><p>
+Se sugiere al alumno que obtenga de forma práctica los resultados de la transparencia 6 (lanzamientos de un solo dado) y la 8 (lanzamientos de dos dados simultáneos). ¡No es necesario lanzar los dados 500 veces, con 50 es suficiente para poder apreciar el comportamiento aleatorio del proceso!
+</p>
+<p>
+Posteriormente se sugiere trabajar en la simulación numérica de datos mediante Excel. El alumno deberá insatarse el complemento para el análisis de datos (Herramientas&gt;&gt;Complementos). Con esto se pueden simular datos de una cierta variedad de procesos (bernouilli, Poisson, normal, etc.)
+</p>
+<p>
+Vamos a simular los lanzamientos de los dados. Lo primero es construir la tabla de probabilidad (ver transparencia nº 9), tenemos:
+</p>
+
+<figure class="captura"><picture><source srcset="/img/dados1.webp" type="image/webp"/><img alt="" decoding="async" height="429" loading="lazy" src="/img/dados1.jpg" width="461"/></picture></figure>
+<p>
+Haga Herramientas&gt;&gt;Análisis de Datos&gt;&gt;Generación de Números Aleatorios 
+</p>
+
+<figure class="captura"><picture><source srcset="/img/dados2.webp" type="image/webp"/><img alt="" decoding="async" height="695" loading="lazy" src="/img/dados2.jpg" width="750"/></picture></figure>
+
+<p>
+ Ahora genere el Histograma, haciendo Herramientas&gt;&gt;Análisis de Datos&gt;&gt;Histograma
+</p>
+
+<figure class="captura"><picture><source srcset="/img/dados3.webp" type="image/webp"/><img alt="" decoding="async" height="691" loading="lazy" src="/img/dados3.jpg" width="685"/></picture></figure>
+
+<p>
+Y... ¡ya tenemos nuestro histograma! 
+</p></div></section><section class="card card--casestudy "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span><h2 class="card__title">Caso de estudio</h2></header><div class="card__body prose">Este módulo no tiene aplicación al caso.</div></section><section class="card card--question "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span><h2 class="card__title">Pon a prueba lo aprendido</h2></header><div class="card__body prose"><div class="quiz" data-quiz="1"><div class="quiz__q prose"><div>
+¿Cómo podríamos inferir, de un modo puramente empírico, el valor de la probabilidad de un suceso aleatorio?<br/>
+</div></div><details class="reveal"><summary>Ver sugerencia</summary><div class="prose"><div><p>
+Lo que estamos tratando aquí es acerca de los valores experimentales de la probabilidad, sin entrar para nada en el análisis de los procesos aleatorios. "Observar antes que pensar" o "Observar para poder pensar mejor"
+</p>
+
+</div></div></details><div class="quiz__opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="0" data-state="ok"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+Lo más sencillo es observar un gran número de veces el resultado del proceso en funcionamiento, y calcular la relación entre el número de casos favorables y el número de casos posibles.
+</div>
+</div></span></label><div class="opt__fb opt__fb--ok" hidden data-for="q1-0"><div class="prose"><div><div>
+EXACTO, esta es la definición clásica de probabilidad según Laplace.<br/>
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="1" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+No se puede determinar la probabilidad de un suceso mediante la observación del mismo, puesto que el resultado es impredecible en cada caso.
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-1"><div class="prose"><div><div>
+INCORRECTO, calcular la probabilidad de un suceso no tiene nada que ver con ser capaces de predecir qué sucederá con el proceso la próxima vez. De hecho son conceptos contradictorios.<br/>
+</div>
+</div></div></div><label class="opt"><input type="radio" name="q1" value="2" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+La observación del proceso real no aporta mucha utilidad, dado que el resultado será diferente cada vez.
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-2"><div class="prose"><div><div>
+INCORRECTO. Es cierto que el resultado diferirá, en cierta medida, para observaciones diferentes y aunque no podemos hablar de un límite en sentido matemático sí es cierto que para los fines prácticos que nos ocupa el "límite" a que convergen los resultados de las observaciones son lo suficientemente válidos.
+</div>
+</div></div></div></div></div></div></section><section class="card card--reflection "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span><h2 class="card__title">Reflexión Final</h2></header><div class="card__body prose"><div>
+No cabe duda que la introducción de conceptos probabilísticos en los temas de mejora de procesos complica de forma importante el tratamiento de éstos. ¿Por qué cree el alumno que nos metemos en semejante complicación?
+</div><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><div>
+Vuelva al capítulo introductorio ("1.pdf", transparencias nº 15 y 16) No se trata de un capricho sino de una necesidad...TODOS los procesos de producción tienen alguna componente aleatoria para cuyo tratamiento no hay más remedio que echar mano de las técnicas estadísticas. 
+</div>
+</div></div></details></div></section>
+    <nav class="pager" aria-label="Paginación de capítulos"><a class="pager__a pager__a--prev" href="/04-r-and-r"><small>Anterior</small><strong>4. R &amp; R</strong></a><a class="pager__a pager__a--next" href="/06-estadistica-basica"><small>Siguiente</small><strong>6. Estadística básica</strong></a></nav>
+  </article>
+  <footer class="footer">
+    <span>Material docente original licenciado bajo <a href="/licencia">GNU FDL 1.2</a>. Versión web modernizada.</span>
+  </footer>
+</main>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

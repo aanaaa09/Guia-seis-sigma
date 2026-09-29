@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Regresión · Calidad: Seis Sigma</title>
+<meta name="description" content="Guía de estudio de la metodología Seis Sigma: estadística, Minitab, capacidad de proceso, ANOVA, DoE y control.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'';</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <button class="topbar__btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="topbar__brand" href="/">Seis <b>Sigma</b></a>
+  <button class="topbar__btn" id="themeBtn" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Índice de la guía">
+  <a class="sidebar__brand" href="/"><span class="sidebar__logo">σ</span><span>Calidad<br><b>Seis Sigma</b></span></a>
+  <nav class="nav">
+<a class="nav__home" href="/">Inicio</a>
+<a class="nav__item" href="/00-como-utilizar-esta-guia"><span class="nav__num">0</span><span>¿Cómo utilizar esta Guía?</span></a>
+<a class="nav__item" href="/01-introduccion"><span class="nav__num">1</span><span>Introducción</span></a>
+<a class="nav__item" href="/02-diagrama-de-procesos"><span class="nav__num">2</span><span>Diagrama de procesos</span></a>
+<a class="nav__item" href="/03-minitab"><span class="nav__num">3</span><span>Minitab</span></a>
+<a class="nav__item" href="/04-r-and-r"><span class="nav__num">4</span><span>R &amp; R</span></a>
+<a class="nav__item" href="/05-probabilidad"><span class="nav__num">5</span><span>Probabilidad</span></a>
+<a class="nav__item" href="/06-estadistica-basica"><span class="nav__num">6</span><span>Estadística básica</span></a>
+<a class="nav__item" href="/07-capacidad-de-proceso"><span class="nav__num">7</span><span>Capacidad de proceso</span></a>
+<a class="nav__item" href="/08-intervalos-de-confianza"><span class="nav__num">8</span><span>Intervalos de confianza</span></a>
+<a class="nav__item" href="/09-contraste-de-hipotesis"><span class="nav__num">9</span><span>Contraste de hipótesis</span></a>
+<a class="nav__item" href="/10-analisis-grafico"><span class="nav__num">10</span><span>Análisis gráfico</span></a>
+<a class="nav__item is-active" aria-current="page" href="/11-regresion"><span class="nav__num">11</span><span>Regresión</span></a>
+<a class="nav__item" href="/12-anova"><span class="nav__num">12</span><span>ANOVA</span></a>
+<a class="nav__item" href="/13-doe-1-parte"><span class="nav__num">13</span><span>DoE · 1ª parte</span></a>
+<a class="nav__item" href="/14-doe-2-parte"><span class="nav__num">14</span><span>DoE · 2ª parte</span></a>
+<a class="nav__item" href="/15-control"><span class="nav__num">15</span><span>Control</span></a>
+  </nav>
+</aside>
+<main class="main" id="contenido">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <article class="article">
+    <p class="kicker">Capítulo 11</p>
+    <h1 class="page-title">Regresión</h1>
+    <section class="lead prose"><div>
+Cuando las variables de entrada (x's) y de salida (y) son de tipo continuo, esta herramienta bien conocida por todos nos permite tanto identificar las variables significativas como determinar la relación matemática entre entradas y salidas. ¡No podemos pedir más! <br/>
+</div></section><section class="card card--objectives "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h2 class="card__title">Objetivos</h2></header><div class="card__body prose"><div>
+El objetivo del módulo es que el alumno sea capaz de realizar análisis de regresión simples mediante Minitab.<br/>
+</div></div></section><section class="card card--preknowledge "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h2 class="card__title">Pre-conocimiento</h2></header><div class="card__body prose"><p>
+Es necesario haber estudiado previamente los módulos 5, Probabilidad, 6, Estadística Básica, y 9, Contraste de Hipótesis, para poder comprender en profundidad el sentido de los análisis de regresión.  
+</p></div></section><section class="card card--reading "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h7"/></svg></span><h2 class="card__title">Actividad de Lectura</h2></header><div class="card__body prose"><p>
+
+
+El material básico de lectura es el archivo "11.pdf", que se divide en los siguientes bloques:
+
+
+</p>
+
+<p>
+
+
+Bloque 1) transparencias 1 a 8.
+
+
+</p>
+<div>
+<blockquote>
+Los conceptos básicos acerca de regresión.
+</blockquote>
+</div>
+<p>
+
+
+Bloque 2) transparencias 9 a 18
+
+
+</p>
+<div>
+<blockquote>
+<p>
+Ejemplo con una sola variable x de entrada.
+</p>
+</blockquote>
+</div>
+<p>
+
+
+Bloque 3) transparencias 19 a 30
+
+
+</p>
+
+
+<blockquote>
+Ejemplo con varias variables x de entrada.
+</blockquote>
+
+<div>
+Repítase el ejemplo propuesto en cada caso, con eso será suficiente. Tenga en cuenta, además, que la ecuación es lo último que hay que mirar en un análisis de este tipo, lo más importante es poder discriminar variables significativas, naturaleza de los residuales, etc. 
+</div></div></section><section class="card card--casestudy "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span><h2 class="card__title">Caso de estudio</h2></header><div class="card__body prose"><p>
+
+
+Partiendo de un helicóptero estándar (ver características en 1, Introducción) pero que tenga las alas de 9,5 cm. de largo; tome tres tiempos de vuelo y apunte los resultados en una hoja de Minitab como se muestra a continuación.
+</p>
+<figure class="captura"><picture><source srcset="/img/regresion.webp" type="image/webp"/><img alt="" decoding="async" height="686" loading="lazy" src="/img/regresion.jpg" width="450"/></picture></figure>
+<p>
+
+
+Ahora reduzca en 1 cm del largo de las alas (se quedarán en 8,5 cm) y repita lo anterior. Siga reduciendo las alas hasta llegar al límite inferior (6,5 cm) de especificación.
+</p>
+<p>
+Construya la recta de regresión Tiempo=f(Alas) y responda a lo siguiente:
+</p>
+<p>
+a) ¿depende el tiempo de vuelo de la longitud de las alas? 
+</p>
+<p>
+b) ¿es una regresión de tipo lineal?
+</p>
+<p>
+c) ¿cual es la expresión matemática de esa dependencia? 
+</p>
+<p>
+Lleve los resultados al informe del caso estudio. 
+</p></div></section><section class="card card--question "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span><h2 class="card__title">Pon a prueba lo aprendido</h2></header><div class="card__body prose"><div class="quiz" data-quiz="1"><div class="quiz__q prose">La herramienta de regresión sirve para:</div><details class="reveal"><summary>Ver sugerencia</summary><div class="prose"><div><div>
+Recuerde tanto lo que significa la herramienta en sí como para qué la utilizamos dentro de un proyecto Seis Sigma.<br/>
+</div>
+</div></div></details><div class="quiz__opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="0" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div>Establecer una relación funcional entre una o más variables predictoras (x's) y la variable de salida (y)
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-0"><div class="prose"><div>INCOMPLETO.
+</div></div></div><label class="opt"><input type="radio" name="q1" value="1" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div>Sirve para ayudar en la tarea de descartar falsas variables predictoras en la etapa de Análisis.
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-1"><div class="prose"><div>INCOMPLETO.
+</div></div></div><label class="opt"><input type="radio" name="q1" value="2" data-state="ok"><span class="opt__mark"></span><span class="opt__text prose"><div>Las dos respuestas anteriores son válidas.
+</div></span></label><div class="opt__fb opt__fb--ok" hidden data-for="q1-2"><div class="prose"><div><div>
+CORRECTO, la faceta de descarte de variables no significativas se utiliza en la etapa de Análisis mientras que el establecimiento de relaciones funcionales lo es en la etapa de Mejora.<br/>
+</div>
+</div></div></div></div></div></div></section><section class="card card--reflection "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span><h2 class="card__title">Reflexión Final</h2></header><div class="card__body prose"><p>
+La conocida herramienta de regresión se utiliza -cuando tanto las x's como la y son variables de tipo continuo, asiduamente en Seis Sigma. Nótese que, en ese caso, una sola herramienta tiene la doble utilidad  que resaltamos en la pregunta anterior.
+</p>
+<p>
+Ahora, si empleáramos esta herramienta para diseñar el helicóptero, ¿cuál cree usted que sería el error que cometeríamos en el diseño? 
+</p><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><div>
+Minitab nos muestra, en la ventana de sesión, el valor de la desviación típica de las diferencias entre los valores reales y la predicción. Esa es la mejor estimación del error del modelo.<br/>
+</div>
+</div></div></details></div></section>
+    <nav class="pager" aria-label="Paginación de capítulos"><a class="pager__a pager__a--prev" href="/10-analisis-grafico"><small>Anterior</small><strong>10. Análisis gráfico</strong></a><a class="pager__a pager__a--next" href="/12-anova"><small>Siguiente</small><strong>12. ANOVA</strong></a></nav>
+  </article>
+  <footer class="footer">
+    <span>Material docente original licenciado bajo <a href="/licencia">GNU FDL 1.2</a>. Versión web modernizada.</span>
+  </footer>
+</main>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

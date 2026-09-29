@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Intervalos de confianza · Calidad: Seis Sigma</title>
+<meta name="description" content="Guía de estudio de la metodología Seis Sigma: estadística, Minitab, capacidad de proceso, ANOVA, DoE y control.">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'';</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="topbar">
+  <button class="topbar__btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="topbar__brand" href="/">Seis <b>Sigma</b></a>
+  <button class="topbar__btn" id="themeBtn" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+</header>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Índice de la guía">
+  <a class="sidebar__brand" href="/"><span class="sidebar__logo">σ</span><span>Calidad<br><b>Seis Sigma</b></span></a>
+  <nav class="nav">
+<a class="nav__home" href="/">Inicio</a>
+<a class="nav__item" href="/00-como-utilizar-esta-guia"><span class="nav__num">0</span><span>¿Cómo utilizar esta Guía?</span></a>
+<a class="nav__item" href="/01-introduccion"><span class="nav__num">1</span><span>Introducción</span></a>
+<a class="nav__item" href="/02-diagrama-de-procesos"><span class="nav__num">2</span><span>Diagrama de procesos</span></a>
+<a class="nav__item" href="/03-minitab"><span class="nav__num">3</span><span>Minitab</span></a>
+<a class="nav__item" href="/04-r-and-r"><span class="nav__num">4</span><span>R &amp; R</span></a>
+<a class="nav__item" href="/05-probabilidad"><span class="nav__num">5</span><span>Probabilidad</span></a>
+<a class="nav__item" href="/06-estadistica-basica"><span class="nav__num">6</span><span>Estadística básica</span></a>
+<a class="nav__item" href="/07-capacidad-de-proceso"><span class="nav__num">7</span><span>Capacidad de proceso</span></a>
+<a class="nav__item is-active" aria-current="page" href="/08-intervalos-de-confianza"><span class="nav__num">8</span><span>Intervalos de confianza</span></a>
+<a class="nav__item" href="/09-contraste-de-hipotesis"><span class="nav__num">9</span><span>Contraste de hipótesis</span></a>
+<a class="nav__item" href="/10-analisis-grafico"><span class="nav__num">10</span><span>Análisis gráfico</span></a>
+<a class="nav__item" href="/11-regresion"><span class="nav__num">11</span><span>Regresión</span></a>
+<a class="nav__item" href="/12-anova"><span class="nav__num">12</span><span>ANOVA</span></a>
+<a class="nav__item" href="/13-doe-1-parte"><span class="nav__num">13</span><span>DoE · 1ª parte</span></a>
+<a class="nav__item" href="/14-doe-2-parte"><span class="nav__num">14</span><span>DoE · 2ª parte</span></a>
+<a class="nav__item" href="/15-control"><span class="nav__num">15</span><span>Control</span></a>
+  </nav>
+</aside>
+<main class="main" id="contenido">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <article class="article">
+    <p class="kicker">Capítulo 8</p>
+    <h1 class="page-title">Intervalos de confianza</h1>
+    <section class="lead prose"><p>
+Este módulo es la base del siguiente (Contraste de Hipótesis) cuyo objetivo es el de permitirnos identificar variables significativas que contribuyen a explicar la variabilidad observada en la medida de los procesos.
+</p>
+<p>
+No constituye, pues, una herramienta Seis Sigma en sí misma, sino que se trata de un pre-conocimiento imprescindible para poder comprender los contrastes de hipótesis. 
+</p></section><section class="card card--objectives "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span><h2 class="card__title">Objetivos</h2></header><div class="card__body prose"><div>
+El objetivo del módulo es que el alumno se familiarice con las técnicas de construcción de intervalos de confianza, tanto para los valores medios como para varianzas.<br/>
+</div></div></section><section class="card card--preknowledge "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><h2 class="card__title">Pre-conocimiento</h2></header><div class="card__body prose"><div>
+Las ideas generales del módulo 6, sobre Estadística Básica, son necesarios para poder comprender estos conceptos.<br/>
+</div></div></section><section class="card card--reading "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h7"/></svg></span><h2 class="card__title">Actividad de Lectura</h2></header><div class="card__body prose"><p>
+
+
+El material básico de lectura es el archivo "8.pdf", que se divide en los siguientes bloques:
+
+
+</p>
+
+<p>
+
+
+Bloque 1) transparencias 1 a 5.
+
+
+</p>
+<div>
+<blockquote>
+Los conceptos básicos acerca de intervalos de confianza. Las transparencias 2 y 5 son las más importantes.
+</blockquote>
+</div>
+<p>
+
+
+Bloque 2) transparencias 6 a 18
+
+
+</p>
+<div>
+<blockquote>
+<p>
+Cálculo de intervalos de confianza para valores medios.
+</p>
+</blockquote>
+</div>
+<p>
+
+
+Bloque 3) transparencias 19 a 23
+
+
+</p>
+
+
+<blockquote>
+Cálculo de intervalos de confianza para varianzas.
+</blockquote>
+
+<p>
+Téngase presente que una vez realizada la medida de los procesos, el paso siguiente es el de determinar los parámetros (media, varianza, etc) de los valores obtenidos. Normalmente tiene poco sentido hablar de un valor concreto para esos parámetros, sino que los estadísticos prefieren hablar en términos de un intervalo de valores dentro de los cuales se encontrará el "verdadero" valor del parámetro con una probabilidad determnada. 
+</p></div></section><section class="card card--casestudy "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span><h2 class="card__title">Caso de estudio</h2></header><div class="card__body prose"><p>
+Un ejercicio interesante es el de realizar el cálculo del intervalo de confianza (para la media y la varianza) para los 20 valores de tiempos obtenidos para el cálculo de la capacidad de proceso.
+</p>
+<p>
+Simplemente realícese el cálculo con Minitab. 
+</p></div></section><section class="card card--question "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8"/><path d="M12 17h.01"/></svg></span><h2 class="card__title">Pon a prueba lo aprendido</h2></header><div class="card__body prose"><div class="quiz" data-quiz="1"><div class="quiz__q prose"><div>
+Si hemos determinado que el intervalo de confianza para la media del tiempo de vuelo de nuestro helicóptero está entre Ta y Tb con un nivel de confianza del 95%, esto significa que:
+</div></div><details class="reveal"><summary>Ver sugerencia</summary><div class="prose"><div>Recuerde lo que aparece en la transparencia 2 y siguientes.
+</div></div></details><div class="quiz__opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="0" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div>Diferentes muestras que obtuviésemos nos darían siempre el mismo resultado.
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-0"><div class="prose"><div>NO, cada muestra nos daría un intervalo diferente.
+</div></div></div><label class="opt"><input type="radio" name="q1" value="1" data-state="ok"><span class="opt__mark"></span><span class="opt__text prose"><div>Hay un 95% de probabilidad de que el verdadero valor de la media esté entre Ta y Tb.
+</div></span></label><div class="opt__fb opt__fb--ok" hidden data-for="q1-1"><div class="prose"><div>Correcto.
+</div></div></div><label class="opt"><input type="radio" name="q1" value="2" data-state="bad"><span class="opt__mark"></span><span class="opt__text prose"><div><div>
+La media verdadera no puede ser nunca ni menor que Ta ni mayor que Tb.<br/>
+</div>
+</div></span></label><div class="opt__fb opt__fb--bad" hidden data-for="q1-2"><div class="prose"><div><div>
+NO, ténga presente que la muestra es algo aleatorio por lo que no podemos hablar en términos de certeza absoluta.<br/>
+</div>
+</div></div></div></div></div></div></section><section class="card card--reflection "><header class="card__head"><span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg></span><h2 class="card__title">Reflexión Final</h2></header><div class="card__body prose"><div>
+Profundicemos un poco más en el concepto de intervalo de confianza. Imaginemos que tomamos un número elevado de muestras y que, para cada una de ellas, calculamos el intervalo de confianza al 95% para la media. ¿Qué cree que sucedería con estos intervalos y el "verdadero" valor de la media?<br/>
+</div><details class="reveal"><summary>Ver respuesta</summary><div class="prose"><div><div>
+Ni más ni menos que el 95% de los intervalos así calculados contendrían al verdadero valor.<br/>
+</div>
+</div></div></details></div></section>
+    <nav class="pager" aria-label="Paginación de capítulos"><a class="pager__a pager__a--prev" href="/07-capacidad-de-proceso"><small>Anterior</small><strong>7. Capacidad de proceso</strong></a><a class="pager__a pager__a--next" href="/09-contraste-de-hipotesis"><small>Siguiente</small><strong>9. Contraste de hipótesis</strong></a></nav>
+  </article>
+  <footer class="footer">
+    <span>Material docente original licenciado bajo <a href="/licencia">GNU FDL 1.2</a>. Versión web modernizada.</span>
+  </footer>
+</main>
+<script src="/js/app.js" defer></script>
+</body>
+</html>

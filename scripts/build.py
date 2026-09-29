@@ -18,7 +18,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # CSS nuclear con alta especificidad para anular los CSS nativos de eXeLearning
 RESPONSIVE_CSS = """
-/* ANULACIÓN FORZOSA DE POSICIONAMIENTOS ABSOLUTOS DE EXELEARNING */
+/* ANULACIÓN FORZOSA DE POSICIONAMIENTOS ABSOLUTOS Y SOLAPAMIENTOS DE EXELEARNING */
 html, body, #nodeDecoration, #header, #emptyHeader, #siteFooter, #footer,
 #siteNav, #main, #content, #wrapper, #outer, .iDevice, #nav, #navcontainer,
 div[id*="nav"], div[id*="site"], div[id*="main"], div[id*="content"] {
@@ -41,28 +41,65 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     overflow-x: hidden !important;
-    background-color: #f5f5f5 !important;
+    background-color: #f5f7f9 !important;
 }
 
-/* CONTENEDOR CONTENEDOR PRINCIPAL FLEXIBLE */
+/* CONTENEDOR PRINCIPAL FLEXIBLE */
 #content, #wrapper, #container {
     display: flex !important;
     flex-direction: column !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
-    padding: 15px !important;
-    gap: 20px !important;
+    padding: 20px !important;
+    gap: 25px !important;
+}
+
+/* LIMPIEZA Y ESTILIZADO DE LAS CAJAS DE CONTENIDO (IDEVICES) */
+.iDevice, div[class*="iDevice"], .iDevice_wrapper, article.iDevice {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+    padding: 20px !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    clear: both !important;
+    display: block !important;
+}
+
+/* REMOVER BARRAS GRISES Y DECORACIONES DE CABECERA */
+.iDevice_header, header.iDevice_header, .iDeviceTitle, div[class*="header"] {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    padding: 0 0 10px 0 !important;
+    margin: 0 0 15px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    border-bottom: 2px solid #84a929 !important; /* Línea verde limpia de acento */
+}
+
+/* CONTENIDO INTERNO DE LAS CAJAS - ELIMINA FONDO GRIS */
+.iDevice_inner, .iDevice_content, .iDevice_wrapper .block, div[class*="content"] {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* MENÚ LATERAL / NAVEGACIÓN */
 #siteNav, #nav, #navcontainer {
     display: block !important;
     width: 100% !important;
-    background: #e9ecef !important;
-    border: 1px solid #ccc !important;
-    border-radius: 6px !important;
-    padding: 12px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
     margin-bottom: 20px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
 }
 
 #siteNav ul, #nav ul {
@@ -77,22 +114,26 @@ html, body {
 
 #siteNav a, #nav a {
     display: block !important;
-    padding: 6px 10px !important;
+    padding: 8px 12px !important;
     text-decoration: none !important;
-    color: #333 !important;
+    color: #333333 !important;
+    border-radius: 4px !important;
     word-break: break-word !important;
 }
 
-/* ÁREA DE CONTENIDO */
+#siteNav a:hover, #nav a:hover {
+    background-color: #f1f5f9 !important;
+}
+
+/* ÁREA DE CONTENIDO PRINCIPAL */
 #main {
     flex: 1 !important;
     min-width: 0 !important;
-    background: #ffffff !important;
-    padding: 15px !important;
-    border-radius: 6px !important;
+    background: transparent !important;
+    padding: 0 !important;
 }
 
-/* MEDIA QUERY PARA ESCRITORIO (MENÚ A LA IZQUIERDA Y CONTENIDO A LA DERECHA) */
+/* MEDIA QUERY PARA ESCRITORIO */
 @media (min-width: 850px) {
     #content, #wrapper, #container {
         flex-direction: row !important;
@@ -100,11 +141,11 @@ html, body {
     }
 
     #siteNav, #nav, #navcontainer {
-        width: 260px !important;
+        width: 280px !important;
         flex-shrink: 0 !important;
         position: sticky !important;
-        top: 15px !important;
-        max-height: calc(100vh - 30px) !important;
+        top: 20px !important;
+        max-height: calc(100vh - 40px) !important;
         overflow-y: auto !important;
         margin-bottom: 0 !important;
     }
